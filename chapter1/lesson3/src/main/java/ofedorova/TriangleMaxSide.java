@@ -8,6 +8,9 @@ package ofedorova;
  */
  public class TriangleMaxSide {
 	 
+	 /**
+	  *Вычисляет максимальную сторону треугольника
+	  */
 	 public double max(Triangle triangle){
 		double sideAB = triangle.getA().distanceTo(triangle.getB());
 		double sideAC = triangle.getA().distanceTo(triangle.getC());
