@@ -1,21 +1,19 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.0</modelVersion>
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
 
-  <groupId>ofedorova.chapter1</groupId>
-  <artifactId>chapter1</artifactId>
-  <version>1.0</version>
-  <packaging>pom</packaging>
-  <name>chapter1</name>
+    <groupId>ofedorova.chapter1</groupId>
+    <artifactId>chapter1</artifactId>
+    <version>1.0</version>
+    <packaging>pom</packaging>
 
-  <parent>
-		<groupId>ofedorova</groupId>
-		<artifactId>lessons</artifactId>
-		<version>1.0</version>
-  </parent>
-  
-  <modules>
-	<module>lesson1</module>
-  </modules>
-  
+    <modules>
+        <module>lesson1</module>
+        <module>lesson2</module>
+		<module>lesson3</module>
+    </modules>
+
+
 </project>

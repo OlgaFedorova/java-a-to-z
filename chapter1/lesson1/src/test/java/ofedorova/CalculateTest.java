@@ -1,38 +1,10 @@
 package ofedorova;
 
-import junit.framework.Test;
-import junit.framework.TestCase;
-import junit.framework.TestSuite;
+import static org.junit.Assert.*;
 
 /**
- * Unit test for simple App.
+ * Created by Olga on 15.07.2016.
  */
-public class CalculateTest 
-    extends TestCase
-{
-    /**
-     * Create the test case
-     *
-     * @param testName name of the test case
-     */
-    public CalculateTest ( String testName )
-    {
-        super( testName );
-    }
+public class CalculateTest {
 
-    /**
-     * @return the suite of tests being tested
-     */
-    public static Test suite()
-    {
-        return new TestSuite(CalculateTest.class );
-    }
-
-    /**
-     * Rigourous Test :-)
-     */
-    public void testApp()
-    {
-        assertTrue( true );
-    }
 }
