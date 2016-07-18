@@ -1,7 +1,7 @@
 package ofedorova;
 
 /**
- *Class класс для вычисления факториала
+ *Class for compute factorial
  *@author Olga Fedorova
  *@since 18.07.2016
  *@version 1
