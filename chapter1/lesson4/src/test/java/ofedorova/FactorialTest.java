@@ -16,10 +16,10 @@ public class FactorialTest {
 	@Test
 	public void whenCompute(){
 		final Factorial factorial = new Factorial(7);
-        int checked = 5040;
+        	int checked = 5040;
 
-        final int result = factorial.compute();
-        assertThat(result, is(checked));
+        	final int result = factorial.compute();
+        	assertThat(result, is(checked));
 	}
 
 }
