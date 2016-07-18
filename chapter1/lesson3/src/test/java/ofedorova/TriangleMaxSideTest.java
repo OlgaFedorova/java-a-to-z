@@ -20,7 +20,7 @@ public class TriangleMaxSideTest{
 		final TriangleMaxSide triangleMaxSide = new TriangleMaxSide();
     	final double checked = 9.3d; 
         
-        assertThat(triangleMaxSide.max(triangle), is(checked));
+        assertThat(triangleMaxSide.maxSide(triangle), is(checked));
 	}
 	
 }
