@@ -15,20 +15,18 @@ public class TriangleTest{
 	
 	@Test
 	public void whenComputeArea(){
-		
-		final Triangle triangleFalse = new Triangle(new Point(-2, 5), new Point(4, 3), new Point(16, -1));
         final Triangle triangleTrue = new Triangle(new Point(-2, 1), new Point(3, 3), new Point(1, 0));
-
-        try {
-            double areaFalse = triangleFalse.area();
-            fail("Exception expected");
-        }catch (Exception e){
-            assertEquals("Поймали IllegalArgumentException", IllegalArgumentException.class, e.getClass());
-        }
-
         assertThat(triangleTrue.area(), is(5.5d));
-
 	}
-	
+
+    @Rule
+    public final ExpectedException exception = ExpectedException.none();
+
+    @Test
+    public void whenComputeAreaExpectedIllegalArgumentException(){
+        final Triangle triangleFalse = new Triangle(new Point(-2, 5), new Point(4, 3), new Point(16, -1));
+        exception.expect(IllegalArgumentException.class);
+        triangleFalse.area();
+    }
 	
 }
