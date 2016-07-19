@@ -30,8 +30,9 @@ package ofedorova;
 	 public void sort(){
 		 for(int indexOut = 0; indexOut < this.values.length; indexOut++){
 			 for(int indexIn = this.values.length - 1; indexIn > indexOut; indexIn--){
-				 if (this.values[indexIn-1] > this.values[indexIn])
+				 if (this.values[indexIn-1] > this.values[indexIn]){
 					 swap(indexIn-1, indexIn);
+				 }
 			 }
 		 }		 
 	 }
