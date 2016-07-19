@@ -10,7 +10,7 @@ package ofedorova;
 	 /**
 	  *The number for factorial
 	  */
-	 private int number;
+	 private final int number;
 	 
 	 public Factorial(int number){
 		 this.number = number;
@@ -18,10 +18,6 @@ package ofedorova;
 	 
 	 public int getNumber(){
 		 return this.number;
-	 }
-	 
-	 public void setNumber(int number){
-		 this.number = number;
 	 }
 	 
 	 /**
