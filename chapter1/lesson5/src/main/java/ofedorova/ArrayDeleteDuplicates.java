@@ -24,12 +24,37 @@ public class ArrayDeleteDuplicates{
         return this.arrayStrings;
     }
 
-    /**
+        /**
      *Delete dublicates from the array
      */
     public void deleteDublicate(){
-        Set<String> set = new LinkedHashSet<String>(Arrays.asList(arrayStrings));
-        arrayStrings = new String[set.size()];
-        set.toArray(arrayStrings);
+        for(int index = 0; index < this.arrayStrings.length; index++){
+            int indexIn = index + 1;
+            while (indexIn < this.arrayStrings.length){
+                if (this.arrayStrings[index].equals(this.arrayStrings[indexIn])){
+                    String[] partFirst = new String[indexIn];
+                    System.arraycopy(this.arrayStrings, 0, partFirst, 0, partFirst.length);
+
+                    String[] partSecond = new String[this.arrayStrings.length - indexIn - 1];
+                    System.arraycopy(this.arrayStrings, indexIn+1, partSecond, 0, partSecond.length);
+
+                    copyTwoArraysIntoOne(partFirst, partSecond);
+                }
+                else {
+                    indexIn++;
+                }
+            }
+        }
+    }
+
+    /**
+     * Coping two arrays into the one.
+     * @param partFirst - the first array for coping
+     * @param partSecond - the second array for coping
+     */
+    private void copyTwoArraysIntoOne(String[] partFirst, String[] partSecond){
+        this.arrayStrings = new String[partFirst.length + partSecond.length];
+        System.arraycopy(partFirst, 0, this.arrayStrings, 0, partFirst.length);
+        System.arraycopy(partSecond,0, this.arrayStrings, partFirst.length, partSecond.length);
     }
 }
