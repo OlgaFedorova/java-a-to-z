@@ -1,9 +1,5 @@
 package ofedorova;
 
-import java.util.Arrays;
-import java.util.LinkedHashSet;
-import java.util.Set;
-
 /**
  *Class for deleting dublicates from the array
  *@author Olga Fedorova
