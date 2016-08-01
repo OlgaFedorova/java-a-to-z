@@ -29,8 +29,8 @@ public class TestTaskTest {
     
     @Test
     public void whenCheckContainsOnBoundStart(){
-        final String origin = "string";
-        final String sub = "str";
+        final String origin = "stRing";
+        final String sub = " sTr";
         
         final boolean checked = true;
         final boolean result = new TestTask().contains(origin, sub);
