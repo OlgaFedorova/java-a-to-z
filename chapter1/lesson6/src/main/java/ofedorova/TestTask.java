@@ -17,8 +17,8 @@ public class TestTask {
      * @return true or false 
      */
     public boolean contains(String origin, String sub){
-        final char[] originArray = origin.toCharArray();
-        final char[] subArray = sub.toCharArray();
+        final char[] originArray = origin.toLowerCase().trim().toCharArray();
+        final char[] subArray = sub.toLowerCase().trim().toCharArray();
         boolean result = false;
         
         for (int index = 0; index < originArray.length; index++){
