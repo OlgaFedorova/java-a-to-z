@@ -8,7 +8,7 @@ import static org.hamcrest.core.Is.is;
  *Class for testing class TestTask
  *@author Olga Fedorova
  *@since 01.08.2016
- *@version 1
+ *@version 2
  */
 public class TestTaskTest {
     
