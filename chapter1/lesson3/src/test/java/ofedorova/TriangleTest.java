@@ -4,9 +4,11 @@ import org.junit.Test;
 
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.*;
+import org.junit.Rule;
+import org.junit.rules.ExpectedException;
 
 /**
- *Class  ласс дл¤ тестировани¤ класса Triangle
+ *Class  класс для тестирования класса Triangle
  *@author Olga Fedorova
  *@since 16.07.2016
  *@version 1
