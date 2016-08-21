@@ -23,7 +23,7 @@ public class StartUI {
     public static void main(String[] args) {
         Tracker tracker = new Tracker();
         
-        //Добавляем заявки
+        //Add items
         System.out.println("Add items:");
         
         tracker.addItem(new Item("item1", "description1"));
@@ -32,59 +32,56 @@ public class StartUI {
         tracker.addItem(new Item("item4", "description4"));
         tracker.addItem(new Item("item5", "description5"));
         
-        //Выводим на печать все заявки
+        //Print all items
         for(Item item : tracker.getItems()){
             System.out.println(item);
         }
         System.out.println("_________________________________________________________");
         
-        //Добавляем комментарий
+        //Add comment
         System.out.println("Add comments:");
         
         tracker.addComment(new Comment(tracker.getItems()[2].getId(), "comment1"));
         tracker.addComment(new Comment(tracker.getItems()[2].getId(), "comment2"));
         
-        //Выводим на печать все заявки
+        //Print all items
         for(Item item : tracker.getItems()){
             System.out.println(item);
         }
         System.out.println("_________________________________________________________");
         
-        //Удаляем заявку
+        //Remove item
         System.out.println("Remove item:");
         
         tracker.removeItem(tracker.getItems()[1]);
         
-        //Выводим на печать все заявки
+        //Print all items
         for(Item item : tracker.getItems()){
             System.out.println(item);
         }
         System.out.println("_________________________________________________________");
         
-        //Редактируем заявку
+        //Edit item
         System.out.println("Edit item:");
         
         Item itemEdit = new Item("edit item", "edit");
         itemEdit.setId(tracker.getItems()[2].getId());
         tracker.editItem(itemEdit);
         
-        //Выводим на печать все заявки
+        //Print all items
         for(Item item : tracker.getItems()){
             System.out.println(item);
         }
         System.out.println("_________________________________________________________");
         
         
-        //Выводим список заявок по фильтру
+        ////Print items bu filter
         System.out.println("Get items by filter:");
         
         for(Item item : tracker.getItems(new FilterFactory().getFilter("name", "5"))){
             System.out.println(item);
         }
         System.out.println("_________________________________________________________");
-        
-        
-        
         
     }
     
