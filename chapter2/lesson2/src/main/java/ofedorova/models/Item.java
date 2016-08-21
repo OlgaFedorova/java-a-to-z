@@ -1,5 +1,6 @@
 package ofedorova.models;
 
+import java.util.Arrays;
 import java.util.Date;
 
 /**
@@ -12,7 +13,7 @@ public class Item {
     private String name;
     private String description;
     private Date dateCreate;
-    private String[]comments = new String[10];
+    private Comment[]comments = new Comment[10];
     private int position = 0;
     private String id;
 
@@ -48,27 +49,70 @@ public class Item {
         this.id = id;
     }
 
-    public String[] getComments() {
-        String[] result = new String[position];
+    public Comment[] getComments() {
+        Comment[] result = new Comment[position];
         System.arraycopy(this.comments, 0, result, 0, position);
         return result;
     }
     
-    public void addComment(String comment){
+    public void addComment(Comment comment){
         if (this.position == this.comments.length){
-            String[] temp = new String[position + 10];
+            Comment[] temp = new Comment[position + 10];
             System.arraycopy(this.comments, 0, temp, 0, position);
             this.comments = temp;    
         }
         this.comments[position++] = comment;
     }
 
-    public Item(String name, String description, String comment) {
+    public Item(String name, String description) {
         this.name = name;
         this.description = description;
         this.dateCreate = new Date();
-        this.comments[this.position++] = comment;
     }
-    
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 53 * hash + (this.name != null ? this.name.hashCode() : 0);
+        hash = 53 * hash + (this.description != null ? this.description.hashCode() : 0);
+        hash = 53 * hash + (this.dateCreate != null ? this.dateCreate.hashCode() : 0);
+        hash = 53 * hash + Arrays.deepHashCode(this.comments);
+        hash = 53 * hash + this.position;
+        hash = 53 * hash + (this.id != null ? this.id.hashCode() : 0);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Item other = (Item) obj;
+        if (this.position != other.position) {
+            return false;
+        }
+        if ((this.name == null) ? (other.name != null) : !this.name.equals(other.name)) {
+            return false;
+        }
+        if ((this.description == null) ? (other.description != null) : !this.description.equals(other.description)) {
+            return false;
+        }
+        if ((this.id == null) ? (other.id != null) : !this.id.equals(other.id)) {
+            return false;
+        }
+        if (this.dateCreate != other.dateCreate && (this.dateCreate == null || !this.dateCreate.equals(other.dateCreate))) {
+            return false;
+        }
+        if (!Arrays.deepEquals(this.comments, other.comments)) {
+            return false;
+        }
+        return true;
+    }
 
 }

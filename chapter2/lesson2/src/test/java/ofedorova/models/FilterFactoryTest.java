@@ -1,8 +1,5 @@
-package models;
+package ofedorova.models;
 
-import ofedorova.models.Filter;
-import ofedorova.models.FilterFactory;
-import ofedorova.models.Item;
 import org.junit.Test;
 
 import static org.hamcrest.core.Is.is;
@@ -23,10 +20,10 @@ public class FilterFactoryTest {
         final FilterFactory factory = new FilterFactory();
         final Filter filter = factory.getFilter("name", "name");
         
-        final Item item1 = new Item("name1", "description1", "comment1");
-        final Item item2 = new Item("item2", "description2", "comment2");
-        final Item item3 = new Item("name3", "description3", "comment3");
-        final Item item4 = new Item("item4", "description4", "comment4");
+        final Item item1 = new Item("name1", "description1");
+        final Item item2 = new Item("item2", "description2");
+        final Item item3 = new Item("name3", "description3");
+        final Item item4 = new Item("item4", "description4");
         
         final Item[] items = {item1, item2, item3, item4};
         final Item[] checked = {item1, item3};
@@ -38,10 +35,10 @@ public class FilterFactoryTest {
         final FilterFactory factory = new FilterFactory();
         final Filter filter = factory.getFilter("description", "description");
         
-        final Item item1 = new Item("name1", "description1", "comment1");
-        final Item item2 = new Item("item2", "infa2", "comment2");
-        final Item item3 = new Item("name3", "description3", "comment3");
-        final Item item4 = new Item("item4", "infa4", "comment4");
+        final Item item1 = new Item("name1", "description1");
+        final Item item2 = new Item("item2", "infa2");
+        final Item item3 = new Item("name3", "description3");
+        final Item item4 = new Item("item4", "infa4");
         
         final Item[] items = {item1, item2, item3, item4};
         final Item[] checked = {item1, item3};
