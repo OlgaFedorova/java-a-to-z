@@ -5,8 +5,10 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>ofedorova.chapter2.lesson2</groupId>
-    <artifactId>lesson2</artifactId>
+    <artifactId>tracker</artifactId>
+    <packaging>jar</packaging>
     <version>1.0</version>
+    <name>lesson2</name>
 
     <dependencies>
         <dependency>
@@ -16,10 +18,28 @@
         </dependency>
     </dependencies>
 
+
     <parent>
         <artifactId>chapter2</artifactId>
         <groupId>ofedorova.chapter2</groupId>
         <version>1.0</version>
     </parent>
+      
+    <build>
+	<plugins>
+            <plugin>
+		<groupId>org.apache.maven.plugins</groupId>
+		<artifactId>maven-jar-plugin</artifactId>
+                <version>3.0.1</version>
+		<configuration>
+                    <archive>
+			<manifest>
+                              <mainClass>ofedorova.start.StartUI</mainClass>
+			</manifest>
+                    </archive>
+		</configuration>
+            </plugin>
+	</plugins>
+    </build>
 
 </project>
