@@ -32,5 +32,12 @@ public class Comment {
         this.idItem = idItem;
         this.value = value;
     }
+
+    @Override
+    public String toString() {
+        return value;
+    }
+    
+    
     
 }

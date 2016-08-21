@@ -115,4 +115,12 @@ public class Item {
         return true;
     }
 
+    @Override
+    public String toString() {
+        return "Item{" + "id=" + id + ", name=" + name + ", description=" + description + ", dateCreate=" + dateCreate 
+                + (this.position == 0 ? "" : ", comments=" + Arrays.toString(this.getComments())) + '}';
+    }
+    
+    
+
 }
