@@ -12,6 +12,10 @@ class FilterByDescription extends Filter{
         super(value);
     }
 
+   /*
+   *The metod finds items to using the field "Value" by the field "Description" of the class "Item".
+   *@return array of items
+   */
     @Override
     public Item[] find(Item[] items) {
         Item[] temp = new Item[items.length];

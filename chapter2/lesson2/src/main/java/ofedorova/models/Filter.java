@@ -14,6 +14,10 @@ public abstract class Filter {
       this.value = value;
   }
 
+  /*
+   *The metod finds items to using the field "Value". 
+   *@return array of items
+   */
   public abstract Item[] find(Item[] items);
 
 }

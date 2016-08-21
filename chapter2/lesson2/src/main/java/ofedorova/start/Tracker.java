@@ -16,6 +16,11 @@ public class Tracker {
     private int position = 0;
     private final Random RN = new Random();
     
+    /*
+    *The metod adds new item into the array "items".
+    *@param item
+    *@return new item
+    */
     public Item addItem(Item item){
         if (this.position == this.items.length){
             Item[] temp = new Item[position + 10];
@@ -27,12 +32,22 @@ public class Tracker {
         return item;
     }
     
+    /*
+    *The metod adds new comment into the item.
+    *@param comment
+    *@return item
+    */
     public Item addComment(Comment comment){
         Item item = this.findById(comment.getIdItem());
         item.addComment(comment);
         return item;
     }
     
+    /*
+    *The metod removes the item ftom the array "items".
+    *@param item
+    *@return true or false
+    */
     public boolean removeItem(Item item){
         
         boolean isRemove = false;
@@ -54,6 +69,10 @@ public class Tracker {
         return isRemove;
     }
     
+    /*
+    *The metod edits the item into the array "items".
+    *@param item
+    */
     public void editItem(Item item){
         for(int index = 0; index < position; index++){
             if(this.items[index] != null && this.items[index] .getId().equals(item.getId())){
@@ -63,16 +82,29 @@ public class Tracker {
         }
     }
     
+    /*
+    *The metod returns the array "items".
+    *@return items
+    */
     public Item[] getItems(){
         Item[] result = new Item[position];
         System.arraycopy(items, 0, result, 0, position);
         return result;
     }
      
+    /*
+    *The metod returns the array "items" to using by filter.
+    *@return items
+    */
     public Item[] getItems(Filter filter){
         return filter.find(this.getItems());
     }
     
+    /*
+    *The metod finds an item to using by field "id".
+    *@param id
+    *@return item
+    */
     protected Item findById(String id){
         Item result = null;
         for(Item item : items){
@@ -84,6 +116,10 @@ public class Tracker {
         return result;
     }
     
+    /*
+    *The metod generates a value of field "id" for new item.
+    *@return id
+    */
     private String generateId(){
         return String.valueOf(System.currentTimeMillis()+ RN.nextInt());
     }

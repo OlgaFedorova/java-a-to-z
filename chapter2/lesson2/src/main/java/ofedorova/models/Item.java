@@ -4,7 +4,7 @@ import java.util.Arrays;
 import java.util.Date;
 
 /**
- *The class implements model of  "application".
+ *The class implements a model of  "application".
  * @author Olga Fedorova
  * @since 16.08.2016
  * @version 1
@@ -17,44 +17,84 @@ public class Item {
     private int position = 0;
     private String id;
 
+    /*
+    * Getter for the field "name".
+    * return name
+    */
     public String getName() {
         return this.name;
     }
 
+    /*
+    *Setter for the field "Name".
+    *@param name
+    */
     public void setName(String name) {
         this.name = name;
     }
 
+    /*
+    *Getter for the field "Description".
+    *@return description
+    */
     public String getDescription() {
         return this.description;
     }
 
+    /*
+    *Setter for the field "Description".
+    *@param description
+    */
     public void setDescription(String description) {
         this.description = description;
     }
 
+    /*
+    *Getter for the field "dateCreate".
+    *@return dateCreate
+    */
     public Date getDateCreate() {
         return this.dateCreate;
     }
-
+    
+    /*
+    *Setter for the field "dateCreate".
+    *@param dateCreate
+    */
     public void setDateCreate(Date dateCreate) {
         this.dateCreate = dateCreate;
     }
 
+    /*
+    *Getter for the field "id".
+    *@return id
+    */
     public String getId() {
         return this.id;
     }
 
+    /*
+    *Setter for the field "id".
+    *@param id
+    */
     public void setId(String id) {
         this.id = id;
     }
-
+    
+    /*
+    *Getter for the field "Comments".
+    *@return comments
+    */
     public Comment[] getComments() {
         Comment[] result = new Comment[position];
         System.arraycopy(this.comments, 0, result, 0, position);
         return result;
     }
     
+    /*
+    *The metod add new comment in the array "Comments".
+    *@param comment
+    */
     public void addComment(Comment comment){
         if (this.position == this.comments.length){
             Comment[] temp = new Comment[position + 10];
@@ -63,6 +103,7 @@ public class Item {
         }
         this.comments[position++] = comment;
     }
+
 
     public Item(String name, String description) {
         this.name = name;
@@ -121,6 +162,4 @@ public class Item {
                 + (this.position == 0 ? "" : ", comments=" + Arrays.toString(this.getComments())) + '}';
     }
     
-    
-
 }

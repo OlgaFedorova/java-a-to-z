@@ -8,6 +8,12 @@ package ofedorova.models;
  */
 public class FilterFactory {
     
+   /*
+   *The method returns the filter depending on the value of parametr "key".
+   *@param key
+   *@param value
+   *@return filter
+   */
     public Filter getFilter(String key, String value){
         Filter filter = null;
         if ("name".equals(key)) {
