@@ -118,7 +118,6 @@ public class Item {
         hash = 53 * hash + (this.description != null ? this.description.hashCode() : 0);
         hash = 53 * hash + (this.dateCreate != null ? this.dateCreate.hashCode() : 0);
         hash = 53 * hash + Arrays.deepHashCode(this.comments);
-        hash = 53 * hash + this.position;
         hash = 53 * hash + (this.id != null ? this.id.hashCode() : 0);
         return hash;
     }
@@ -135,9 +134,6 @@ public class Item {
             return false;
         }
         final Item other = (Item) obj;
-        if (this.position != other.position) {
-            return false;
-        }
         if ((this.name == null) ? (other.name != null) : !this.name.equals(other.name)) {
             return false;
         }
