@@ -59,7 +59,6 @@ public class StubInputTest {
                     description = input.ask("Input new description of item: ");
                     Item itemEdit = new Item(name, description);
                     itemEdit.setId(id);
-                    itemEdit.setDateCreate(itemStart.getDateCreate());
                     tracker.getItems()[1].setId(id);
                     tracker.editItem(itemEdit);
                     assertEquals("", itemStart, tracker.getItems()[1]);

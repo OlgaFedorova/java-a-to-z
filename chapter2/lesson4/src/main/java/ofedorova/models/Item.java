@@ -116,7 +116,6 @@ public class Item {
         int hash = 7;
         hash = 53 * hash + (this.name != null ? this.name.hashCode() : 0);
         hash = 53 * hash + (this.description != null ? this.description.hashCode() : 0);
-        hash = 53 * hash + (this.dateCreate != null ? this.dateCreate.hashCode() : 0);
         hash = 53 * hash + Arrays.deepHashCode(this.comments);
         hash = 53 * hash + (this.id != null ? this.id.hashCode() : 0);
         return hash;
@@ -141,9 +140,6 @@ public class Item {
             return false;
         }
         if ((this.id == null) ? (other.id != null) : !this.id.equals(other.id)) {
-            return false;
-        }
-        if (this.dateCreate != other.dateCreate && (this.dateCreate == null || !this.dateCreate.equals(other.dateCreate))) {
             return false;
         }
         if (!Arrays.deepEquals(this.comments, other.comments)) {

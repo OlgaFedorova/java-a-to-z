@@ -29,70 +29,46 @@ public class StubInputTest {
     public void testWithStubInput(){
         String[] answers = {"1", "name1", "description1", //add first item
                             "1", "name3", "description3", //add third item
+                            "1", "name4", "description5", //add third item
                             "2", "0001", "name2", "description2",//edit the item
                             "4", //show all item
-                            "5", "name", "2", // show id by filter
                             "6", "0001", "comment1",//Add new comment into the item
                             "3", "0001",//Remove the item
                             "7", "Y"};// Exit 
 
 
-        boolean exit = false;
         Tracker tracker = new Tracker();
         Input input = new StubInput(answers);
+        MenuTracker menuTracker = new MenuTracker(input, tracker);
+        menuTracker.fillAction();
         int countAdd = 0;
 
-        while (!exit) {
+        while (!menuTracker.isExit()) {
 
             String operation = input.ask("Select the operation: ");
+            if (operation.equals("2")){
+                tracker.getItems()[1].setId(itemStart.getId());
+            }
+            
+            menuTracker.select(Integer.valueOf(operation));
             switch(operation){
                 case "1": //add first item
-                    String name = input.ask("Input a name of item: ");
-                    String description = input.ask("Input a description of item: ");
-                    tracker.addItem(new Item(name, description));
                     countAdd++;
                     assertThat(tracker.getItems().length, is(countAdd));
                     break;
                 case "2": //Edit the item
-                    String id = input.ask("Input the id of item: ");
-                    name = input.ask("Input new name of item: ");
-                    description = input.ask("Input new description of item: ");
-                    Item itemEdit = new Item(name, description);
-                    itemEdit.setId(id);
-                    itemEdit.setDateCreate(itemStart.getDateCreate());
-                    tracker.getItems()[1].setId(id);
-                    tracker.editItem(itemEdit);
                     assertEquals("", itemStart, tracker.getItems()[1]);
                     break;
                 case "3": //Remove the item
-                    id = input.ask("Input the id of item: ");
-                    tracker.removeItem(tracker.findById(id));
-                    assertThat(tracker.getItems().length, is(1));
-                    break;
-                case "4"://Show all items
                     assertThat(tracker.getItems().length, is(2));
                     break;
-                case "5"://Show items by filter
-                    String key = input.ask("Input the field for finding items: ");
-                    String value = input.ask("Input the value of field for finding items: ");
-                    assertEquals("", itemStart, tracker.getItems(new FilterFactory().getFilter(key, value))[0]);
+                case "4"://Show all items
+                    assertThat(tracker.getItems().length, is(3));
                     break;
                 case "6": //Add new comment into the item
-                    id = input.ask("Input the id of item: ");
-                    String commentSting = input.ask("Input new comment for the item: ");
-                    Comment comment = new Comment(id, commentSting);
-                    tracker.addComment(comment);
-                    assertEquals("", comment, tracker.getItems()[1].getComments()[0]);
+                    assertThat(tracker.getItems()[1].getComments().length, is(1));
                     break;
-                case "7"://Exit
-                    String answerExit = input.ask("Are you sure? Y/N: ");
-                    if(answerExit.equals("Y")){
-                        exit = true;
-                   }
-                   break;
-                }
-
+            }
         }
-
     }
 }
