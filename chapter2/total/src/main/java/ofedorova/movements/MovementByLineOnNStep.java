@@ -15,34 +15,38 @@ public class MovementByLineOnNStep implements Movement{
 
     /*
     * The method implements a specific movement.
-    * @param chessboard, chessman, new position
-    * @return true or false
-    * @throws IllegalPositionError, if new position is incorrect.
+    * @param chessman, new position
+    * @return array of position on path moving.
     */
     @Override
-    public boolean excute(ChessBoard board, Chessman chessman, Position newPosition) throws IllegalPositionError{
-        boolean result = false;
+    public Position[] excute(Chessman chessman, Position newPosition){
+        Position[] result = null;
+        int index = 0;
         if(chessman.getPosition().getX() == newPosition.getX()){
             if(chessman.getPosition().getY() > newPosition.getY()){
+                result = new Position[chessman.getPosition().getY() - newPosition.getY()];
                 for(int y = chessman.getPosition().getY() - 1; y >= newPosition.getY(); y--){
-                    result = board.checkStep(chessman, newPosition, chessman.getPosition().getX(), y);
+                    result[index++] = new Position(chessman.getPosition().getX(), y);
                 }
             }
             else{
+                result = new Position[newPosition.getY() - chessman.getPosition().getY()];
                 for(int y = chessman.getPosition().getY() + 1; y <= newPosition.getY(); y++){
-                    result = board.checkStep(chessman, newPosition, chessman.getPosition().getX(), y);
+                    result[index++] = new Position(chessman.getPosition().getX(), y);
                 }
             }
         }
         else if (chessman.getPosition().getY() == newPosition.getY()){
             if(chessman.getPosition().getX() > newPosition.getX()){
+                result = new Position[chessman.getPosition().getX() - newPosition.getX()];
                 for(int x = chessman.getPosition().getX() - 1; x >= newPosition.getX(); x--){
-                    result = board.checkStep(chessman, newPosition, x, chessman.getPosition().getY());
+                    result[index++] = new Position(x, chessman.getPosition().getY());
                 }
             }
             else{
+                result = new Position[newPosition.getX() - chessman.getPosition().getX()];
                 for(int x = chessman.getPosition().getX() + 1; x <= newPosition.getX(); x++){
-                    result = board.checkStep(chessman, newPosition, x, chessman.getPosition().getY());
+                    result[index++] = new Position(x, chessman.getPosition().getY());
                 }
             }
         }

@@ -28,12 +28,11 @@ public class KingTest {
         final King king = new King(new Position(3, 2), true);
         board.addChessman(king);
         
-        board.move(king, new Position(2,1));
+        final Position newPosition = new Position(2,1);
+        board.move(king, newPosition);
         
         //данные для проверки
-        ChessBoard check = new ChessBoard();
-        check.addChessman(new King(new Position(2,1), true));
-        assertEquals(board, check);
+        assertEquals(king.getPosition(), newPosition);
     }
     
     /*
@@ -46,12 +45,11 @@ public class KingTest {
         final King king = new King(new Position(3, 2), true);
         board.addChessman(king);
         
-        board.move(king, new Position(3,1));
+        final Position newPosition = new Position(3,1);
+        board.move(king, newPosition);
         
         //данные для проверки
-        ChessBoard check = new ChessBoard();
-        check.addChessman(new King(new Position(3,1), true));
-        assertEquals(board, check);
+        assertEquals(king.getPosition(), newPosition);
     }
     
     /*
@@ -64,12 +62,11 @@ public class KingTest {
         final King king = new King(new Position(3, 2), true);
         board.addChessman(king);
         
-        board.move(king, new Position(4,1));
+        final Position newPosition = new Position(4,1);
+        board.move(king, newPosition);
         
         //данные для проверки
-        ChessBoard check = new ChessBoard();
-        check.addChessman(new King(new Position(4,1), true));
-        assertEquals(board, check);
+        assertEquals(king.getPosition(), newPosition);
     }
     
     /*
@@ -82,12 +79,11 @@ public class KingTest {
         final King king = new King(new Position(3, 2), true);
         board.addChessman(king);
         
-        board.move(king, new Position(2,2));
+        final Position newPosition = new Position(2,2);
+        board.move(king, newPosition);
         
         //данные для проверки
-        ChessBoard check = new ChessBoard();
-        check.addChessman(new King(new Position(2,2), true));
-        assertEquals(board, check);
+        assertEquals(king.getPosition(), newPosition);
     }
     
     /*
@@ -100,12 +96,11 @@ public class KingTest {
         final King king = new King(new Position(3, 2), true);
         board.addChessman(king);
         
-        board.move(king, new Position(4,2));
+        final Position newPosition = new Position(4,2);
+        board.move(king, newPosition);
         
         //данные для проверки
-        ChessBoard check = new ChessBoard();
-        check.addChessman(new King(new Position(4,2), true));
-        assertEquals(board, check);
+        assertEquals(king.getPosition(), newPosition);
     }
     
     /*
@@ -118,12 +113,11 @@ public class KingTest {
         final King king = new King(new Position(3, 2), true);
         board.addChessman(king);
         
-        board.move(king, new Position(2,3));
+        final Position newPosition = new Position(2,3);
+        board.move(king, newPosition);
         
         //данные для проверки
-        ChessBoard check = new ChessBoard();
-        check.addChessman(new King(new Position(2,3), true));
-        assertEquals(board, check);
+        assertEquals(king.getPosition(), newPosition);
     }
     
     /*
@@ -136,12 +130,11 @@ public class KingTest {
         final King king = new King(new Position(3, 2), true);
         board.addChessman(king);
         
-        board.move(king, new Position(3,3));
+        final Position newPosition = new Position(3,3);
+        board.move(king, newPosition);
         
         //данные для проверки
-        ChessBoard check = new ChessBoard();
-        check.addChessman(new King(new Position(3,3), true));
-        assertEquals(board, check);
+        assertEquals(king.getPosition(), newPosition);
     }
     
     /*
@@ -154,12 +147,11 @@ public class KingTest {
         final King king = new King(new Position(3, 2), true);
         board.addChessman(king);
         
-        board.move(king, new Position(4,3));
+        final Position newPosition = new Position(4,3);
+        board.move(king, newPosition);
         
         //данные для проверки
-        ChessBoard check = new ChessBoard();
-        check.addChessman(new King(new Position(4,3), true));
-        assertEquals(board, check);
+        assertEquals(king.getPosition(), newPosition);
     }
     
     /*
@@ -174,12 +166,11 @@ public class KingTest {
         final Pawn pawnEnemy = new Pawn(new Position(4,3), false);
         board.addChessman(pawnEnemy);
         
-        board.move(king, new Position(4,3));
+        final Position newPosition = new Position(4,3);
+        board.move(king, newPosition);
         
         //данные для проверки
-        ChessBoard check = new ChessBoard();
-        check.addChessman(new King(new Position(4,3), true));
-        assertEquals(board, check);
+        assertEquals(king.getPosition(), newPosition);
         
     }
     

@@ -28,12 +28,11 @@ public class RookTest {
         board.addChessman(rook);
         
         //двигаем ладью влево
-        board.move(rook, new Position(0, 2));
+        final Position newPosition = new Position(0,2);
+        board.move(rook, newPosition);
         
         //данные для проверки
-        ChessBoard check = new ChessBoard();
-        check.addChessman(new Rook(new Position(0, 2), true));
-        assertEquals(board, check);
+        assertEquals(rook.getPosition(), newPosition);
     }
     
     /*
@@ -47,12 +46,11 @@ public class RookTest {
         board.addChessman(rook);
         
         //двигаем ладью вправо
-        board.move(rook, new Position(6, 2));
+        final Position newPosition = new Position(6,2);
+        board.move(rook, newPosition);
         
         //данные для проверки
-        ChessBoard check = new ChessBoard();
-        check.addChessman(new Rook(new Position(6, 2), true));
-        assertEquals(board, check);
+        assertEquals(rook.getPosition(), newPosition);
     }
     
     /*
@@ -66,12 +64,11 @@ public class RookTest {
         board.addChessman(rook);
         
         //двигаем ладью вверх
-        board.move(rook, new Position(6, 0));
+        final Position newPosition = new Position(6,0);
+        board.move(rook, newPosition);
         
         //данные для проверки
-        ChessBoard check = new ChessBoard();
-        check.addChessman(new Rook(new Position(6, 0), true));
-        assertEquals(board, check);
+        assertEquals(rook.getPosition(), newPosition);
     }
     
     /*
@@ -85,12 +82,11 @@ public class RookTest {
         board.addChessman(rook);
         
         //двигаем ладью ввниз
-        board.move(rook, new Position(6, 6));
+        final Position newPosition = new Position(6,6);
+        board.move(rook, newPosition);
         
         //данные для проверки
-        ChessBoard check = new ChessBoard();
-        check.addChessman(new Rook(new Position(6, 6), true));
-        assertEquals(board, check);
+        assertEquals(rook.getPosition(), newPosition);
     }
     
     /*
@@ -105,12 +101,11 @@ public class RookTest {
         final Rook rookEnemy = new Rook(new Position(6, 2), false);
         board.addChessman(rookEnemy);
         
-        board.move(rook, new Position(6, 2));
+        final Position newPosition = new Position(6,2);
+        board.move(rook, newPosition);
         
         //данные для проверки
-        ChessBoard check = new ChessBoard();
-        check.addChessman(new Rook(new Position(6, 2), true));
-        assertEquals(board, check);
+        assertEquals(rook.getPosition(), newPosition);
         
     }
     

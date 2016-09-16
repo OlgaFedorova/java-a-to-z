@@ -27,12 +27,11 @@ public class HorseTest {
         final Horse horse = new Horse(new Position(3, 2), true);
         board.addChessman(horse);
         
-        board.move(horse, new Position(2,0));
+        final Position newPosition = new Position(2,0);
+        board.move(horse, newPosition);
         
         //данные для проверки
-        ChessBoard check = new ChessBoard();
-        check.addChessman(new Horse(new Position(2,0), true));
-        assertEquals(board, check);
+        assertEquals(horse.getPosition(), newPosition);
     }
     
     /*
@@ -45,12 +44,11 @@ public class HorseTest {
         final Horse horse = new Horse(new Position(3, 2), true);
         board.addChessman(horse);
         
-        board.move(horse, new Position(4,0));
+        final Position newPosition = new Position(4,0);
+        board.move(horse, newPosition);
         
         //данные для проверки
-        ChessBoard check = new ChessBoard();
-        check.addChessman(new Horse(new Position(4,0), true));
-        assertEquals(board, check);
+        assertEquals(horse.getPosition(), newPosition);
     }
     
     /*
@@ -63,12 +61,11 @@ public class HorseTest {
         final Horse horse = new Horse(new Position(3, 2), true);
         board.addChessman(horse);
         
-        board.move(horse, new Position(5,1));
+        final Position newPosition = new Position(5,1);
+        board.move(horse, newPosition);
         
         //данные для проверки
-        ChessBoard check = new ChessBoard();
-        check.addChessman(new Horse(new Position(5,1), true));
-        assertEquals(board, check);
+        assertEquals(horse.getPosition(), newPosition);
     }
     
     /*
@@ -81,12 +78,11 @@ public class HorseTest {
         final Horse horse = new Horse(new Position(3, 2), true);
         board.addChessman(horse);
         
-        board.move(horse, new Position(5,3));
+        final Position newPosition = new Position(5,3);
+        board.move(horse, newPosition);
         
         //данные для проверки
-        ChessBoard check = new ChessBoard();
-        check.addChessman(new Horse(new Position(5,3), true));
-        assertEquals(board, check);
+        assertEquals(horse.getPosition(), newPosition);
     }
     
     /*
@@ -99,12 +95,11 @@ public class HorseTest {
         final Horse horse = new Horse(new Position(3, 2), true);
         board.addChessman(horse);
         
-        board.move(horse, new Position(4,4));
+        final Position newPosition = new Position(4,4);
+        board.move(horse, newPosition);
         
         //данные для проверки
-        ChessBoard check = new ChessBoard();
-        check.addChessman(new Horse(new Position(4,4), true));
-        assertEquals(board, check);
+        assertEquals(horse.getPosition(), newPosition);
     }
     
     /*
@@ -117,12 +112,11 @@ public class HorseTest {
         final Horse horse = new Horse(new Position(3, 2), true);
         board.addChessman(horse);
         
-        board.move(horse, new Position(2,4));
+        final Position newPosition = new Position(2,4);
+        board.move(horse, newPosition);
         
         //данные для проверки
-        ChessBoard check = new ChessBoard();
-        check.addChessman(new Horse(new Position(2,4), true));
-        assertEquals(board, check);
+        assertEquals(horse.getPosition(), newPosition);
     }
     
     /*
@@ -135,12 +129,11 @@ public class HorseTest {
         final Horse horse = new Horse(new Position(3, 2), true);
         board.addChessman(horse);
         
-        board.move(horse, new Position(1,3));
+        final Position newPosition = new Position(1,3);
+        board.move(horse, newPosition);
         
         //данные для проверки
-        ChessBoard check = new ChessBoard();
-        check.addChessman(new Horse(new Position(1,3), true));
-        assertEquals(board, check);
+        assertEquals(horse.getPosition(), newPosition);
     }
     
     /*
@@ -153,12 +146,11 @@ public class HorseTest {
         final Horse horse = new Horse(new Position(3, 2), true);
         board.addChessman(horse);
         
-        board.move(horse, new Position(1,1));
+        final Position newPosition = new Position(1,1);
+        board.move(horse, newPosition);
         
         //данные для проверки
-        ChessBoard check = new ChessBoard();
-        check.addChessman(new Horse(new Position(1,1), true));
-        assertEquals(board, check);
+        assertEquals(horse.getPosition(), newPosition);
     }
     
     /*
@@ -173,12 +165,11 @@ public class HorseTest {
         final Horse horseEnemy = new Horse(new Position(1,1), false);
         board.addChessman(horseEnemy);
         
-        board.move(horse, new Position(1,1));
+        final Position newPosition = new Position(1,1);
+        board.move(horse, newPosition);
         
         //данные для проверки
-        ChessBoard check = new ChessBoard();
-        check.addChessman(new Horse(new Position(1,1), true));
-        assertEquals(board, check);
+        assertEquals(horse.getPosition(), newPosition);
         
     }
     

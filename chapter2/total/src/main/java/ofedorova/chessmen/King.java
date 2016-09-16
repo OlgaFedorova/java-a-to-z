@@ -1,6 +1,5 @@
 package ofedorova.chessmen;
 
-import ofedorova.ChessBoard;
 import ofedorova.IllegalPositionError;
 import ofedorova.Position;
 
@@ -18,13 +17,13 @@ public class King extends Chessman{
 
     /*
     * The method moves chessman to change position.
-    * @param board, new position
-    * @return true or false
+    * @param new position
+    * @return array of position on path moving.
     * @throws IllegalPositionError, if new position is incorrect.
     */
     @Override
-    public boolean changePosition(ChessBoard board, Position newPosition) throws IllegalPositionError {
-        boolean result = false;
+    public Position[] changePosition(Position newPosition) throws IllegalPositionError {
+        Position[] result = null;
         
         if((newPosition.getX() == this.getPosition().getX()- 1
             || newPosition.getX() == this.getPosition().getX()
@@ -32,7 +31,8 @@ public class King extends Chessman{
             &&(newPosition.getY() == this.getPosition().getY() - 1
             || newPosition.getY() == this.getPosition().getY()
             || newPosition.getY() == this.getPosition().getY() + 1)){
-            result = board.checkStep(this, newPosition, newPosition.getX(), newPosition.getY());
+            result = new Position[1];
+            result[0] = newPosition;
         }
         else {
             throw new IllegalPositionError("The king can't moves on this path.");

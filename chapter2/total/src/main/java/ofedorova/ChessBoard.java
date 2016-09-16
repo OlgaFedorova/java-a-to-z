@@ -17,7 +17,14 @@ import ofedorova.chessmen.Rook;
  */
 public class ChessBoard {
     
-    private final Chessman[][] board = new Chessman[8][8];
+    private final Cell[][] board = new Cell[8][8];
+    {
+        for(int y = 0; y < this.board.length; y++){
+            for(int x = 0; x < this.board[y].length; x++){
+                this.board[y][x] = new Cell(new Position(x, y));
+            }
+        }
+    }
 
     /*
     * Initialize start values.
@@ -58,7 +65,7 @@ public class ChessBoard {
     * @param chessman
     */
     public void addChessman(Chessman chessman){
-        this.board[chessman.getPosition().getY()][chessman.getPosition().getX()] = chessman;
+        this.board[chessman.getPosition().getY()][chessman.getPosition().getX()].setChessman(chessman);
     }
     
     /*
@@ -67,8 +74,23 @@ public class ChessBoard {
     */
     private void removeChessmen(Chessman chessman){
         if(chessman != null){
-            this.board[chessman.getPosition().getY()][chessman.getPosition().getX()] = null;
+            this.board[chessman.getPosition().getY()][chessman.getPosition().getX()].setChessman(null);
         }
+    }
+    
+    /*
+    * The method checks one step of moving
+    * @return true or false
+    * @throws IllegalPositionError, if there are other chessmen on this path.
+    */
+    public boolean checkStep(Chessman chessman, Position newPosition, Position currentPosition) throws IllegalPositionError{
+        if(this.board[currentPosition.getY()][currentPosition.getX()].getChessman() != null 
+                && !(currentPosition.getY() == newPosition.getY() 
+                     && currentPosition.getX() == newPosition.getX()
+                     && chessman.isWhite() != this.board[currentPosition.getY()][currentPosition.getX()].getChessman().isWhite())){
+            throw new IllegalPositionError("There are other chessmen on this path.");                    
+        }
+        return true;
     }
     
     /*
@@ -103,37 +125,24 @@ public class ChessBoard {
     }
     
     /*
-    * The method checks one step of moving
-    * @return true or false
-    * @throws IllegalPositionError, if there are other chessmen on this path.
-    */
-    public boolean checkStep(Chessman chessman, Position newPosition, int x, int y) throws IllegalPositionError{
-        if(this.board[y][x] != null 
-                && !(y == newPosition.getY() && chessman.isWhite() 
-                        != this.board[y][x].isWhite())){
-            throw new IllegalPositionError("There are other chessmen on this path.");                    
-        }
-        return true;
-    }
-    
-    /*
     * The method moves chessman on new position.
     * @param chessman, new position.
     * @throws IllegalPositionError, if new position is incorrect.
     */
-    public void move (Chessman chessman, Position position) throws IllegalPositionError{
-        this.checkPositionOnCorrect(chessman, position);
-        if (chessman.changePosition(this, position)){
-            this.removeChessmen(chessman);
-            chessman.setPosition(position);
-            this.addChessman(chessman);            
+    public void move (Chessman chessman, Position newPposition) throws IllegalPositionError{
+        this.checkPositionOnCorrect(chessman, newPposition);
+        for(Position nextPosition : chessman.changePosition(newPposition)){
+            this.checkStep(chessman, newPposition, nextPosition);
         }
+        this.removeChessmen(chessman);
+        chessman.setPosition(newPposition);
+        this.addChessman(chessman);            
     }
 
     @Override
     public int hashCode() {
-        int hash = 7;
-        hash = 17 * hash + Arrays.deepHashCode(this.board);
+        int hash = 5;
+        hash = 31 * hash + Arrays.deepHashCode(this.board);
         return hash;
     }
 
@@ -154,6 +163,6 @@ public class ChessBoard {
         }
         return true;
     }
-
+    
     
 }

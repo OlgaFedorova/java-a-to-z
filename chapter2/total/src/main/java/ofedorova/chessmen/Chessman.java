@@ -41,12 +41,20 @@ public abstract class Chessman {
     public boolean isWhite() {
         return this.isWhite;
     }
+     
+    /*
+    * The method moves chessman to change position.
+    * @param new position
+    * @return array of position on path moving.
+    * @throws IllegalPositionError, if new position is incorrect.
+    */
+    public abstract Position[] changePosition(Position newPosition) throws IllegalPositionError;
 
     @Override
     public int hashCode() {
-        int hash = 3;
-        hash = 97 * hash + Objects.hashCode(this.position);
-        hash = 97 * hash + (this.isWhite ? 1 : 0);
+        int hash = 5;
+        hash = 67 * hash + Objects.hashCode(this.position);
+        hash = 67 * hash + (this.isWhite ? 1 : 0);
         return hash;
     }
 
@@ -71,12 +79,5 @@ public abstract class Chessman {
         return true;
     }
     
-     
-    /*
-    * The method moves chessman to change position.
-    * @param board, new position
-    * @return true or false
-    * @throws IllegalPositionError, if new position is incorrect.
-    */
-    public abstract boolean changePosition(ChessBoard board, Position newPosition) throws IllegalPositionError;
+    
 }

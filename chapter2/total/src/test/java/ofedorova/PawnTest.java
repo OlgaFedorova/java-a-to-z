@@ -27,12 +27,11 @@ public class PawnTest {
         final Pawn pawn = new Pawn(new Position(3, 6), true);
         board.addChessman(pawn);
         
-        board.move(pawn, new Position(3,4));
+        final Position newPosition = new Position(3,4);
+        board.move(pawn, newPosition);
         
         //данные для проверки
-        ChessBoard check = new ChessBoard();
-        check.addChessman(new Pawn(new Position(3,4), true));
-        assertEquals(board, check);
+        assertEquals(pawn.getPosition(), newPosition);
     }
     
     /*
@@ -45,12 +44,11 @@ public class PawnTest {
         final Pawn pawn = new Pawn(new Position(3, 6), true);
         board.addChessman(pawn);
         
-        board.move(pawn, new Position(3,5));
+        final Position newPosition = new Position(3,5);
+        board.move(pawn, newPosition);
         
         //данные для проверки
-        ChessBoard check = new ChessBoard();
-        check.addChessman(new Pawn(new Position(3,5), true));
-        assertEquals(board, check);
+        assertEquals(pawn.getPosition(), newPosition);
     }
     
     /*
@@ -63,12 +61,11 @@ public class PawnTest {
         final Pawn pawn = new Pawn(new Position(3, 4), true);
         board.addChessman(pawn);
         
-        board.move(pawn, new Position(3,3));
+        final Position newPosition = new Position(3,3);
+        board.move(pawn, newPosition);
         
         //данные для проверки
-        ChessBoard check = new ChessBoard();
-        check.addChessman(new Pawn(new Position(3,3), true));
-        assertEquals(board, check);
+        assertEquals(pawn.getPosition(), newPosition);
     }
     
     
@@ -82,12 +79,11 @@ public class PawnTest {
         final Pawn pawn = new Pawn(new Position(3, 1), true);
         board.addChessman(pawn);
         
-        board.move(pawn, new Position(3,3));
+        final Position newPosition = new Position(3,3);
+        board.move(pawn, newPosition);
         
         //данные для проверки
-        ChessBoard check = new ChessBoard();
-        check.addChessman(new Pawn(new Position(3,3), true));
-        assertEquals(board, check);
+        assertEquals(pawn.getPosition(), newPosition);
     }
     
     /*
@@ -100,12 +96,11 @@ public class PawnTest {
         final Pawn pawn = new Pawn(new Position(3, 1), true);
         board.addChessman(pawn);
         
-        board.move(pawn, new Position(3,2));
+        final Position newPosition = new Position(3,2);
+        board.move(pawn, newPosition);
         
         //данные для проверки
-        ChessBoard check = new ChessBoard();
-        check.addChessman(new Pawn(new Position(3,2), true));
-        assertEquals(board, check);
+        assertEquals(pawn.getPosition(), newPosition);
     }
     
     /*
@@ -119,12 +114,11 @@ public class PawnTest {
         pawn.setMoveUp(false);
         board.addChessman(pawn);
         
-        board.move(pawn, new Position(3,5));
+        final Position newPosition = new Position(3,5);
+        board.move(pawn, newPosition);
         
         //данные для проверки
-        ChessBoard check = new ChessBoard();
-        check.addChessman(new Pawn(new Position(3,5), true));
-        assertEquals(board, check);
+        assertEquals(pawn.getPosition(), newPosition);
     }
     
     /*
@@ -139,12 +133,11 @@ public class PawnTest {
         final Pawn pawnEnemy = new Pawn(new Position(3,3), false);
         board.addChessman(pawnEnemy);
         
-        board.move(pawn, new Position(3,3));
+        final Position newPosition = new Position(3,3);
+        board.move(pawn, newPosition);
         
         //данные для проверки
-        ChessBoard check = new ChessBoard();
-        check.addChessman(new Pawn(new Position(3,3), true));
-        assertEquals(board, check);
+        assertEquals(pawn.getPosition(), newPosition);
         
     }
     

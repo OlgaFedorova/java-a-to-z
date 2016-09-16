@@ -28,12 +28,11 @@ public class QueenTest {
         board.addChessman(queen);
         
         //двигаем ферзя влево
-        board.move(queen, new Position(0, 2));
+        final Position newPosition = new Position(0,2);
+        board.move(queen, newPosition);
         
         //данные для проверки
-        ChessBoard check = new ChessBoard();
-        check.addChessman(new Queen(new Position(0, 2), true));
-        assertEquals(board, check);
+        assertEquals(queen.getPosition(), newPosition);
     }
     
     /*
@@ -47,12 +46,11 @@ public class QueenTest {
         board.addChessman(queen);
         
         //двигаем ферзя вправо
-        board.move(queen, new Position(6, 2));
+        final Position newPosition = new Position(6,2);
+        board.move(queen, newPosition);
         
         //данные для проверки
-        ChessBoard check = new ChessBoard();
-        check.addChessman(new Queen(new Position(6, 2), true));
-        assertEquals(board, check);
+        assertEquals(queen.getPosition(), newPosition);
     }
     
     /*
@@ -66,12 +64,11 @@ public class QueenTest {
         board.addChessman(queen);
         
         //двигаем ферзя вверх
-        board.move(queen, new Position(6, 0));
+        final Position newPosition = new Position(6,0);
+        board.move(queen, newPosition);
         
         //данные для проверки
-        ChessBoard check = new ChessBoard();
-        check.addChessman(new Queen(new Position(6, 0), true));
-        assertEquals(board, check);
+        assertEquals(queen.getPosition(), newPosition);
     }
     
     /*
@@ -85,12 +82,11 @@ public class QueenTest {
         board.addChessman(queen);
         
         //двигаем ферзя ввниз
-        board.move(queen, new Position(6, 6));
+        final Position newPosition = new Position(6,6);
+        board.move(queen, newPosition);
         
         //данные для проверки
-        ChessBoard check = new ChessBoard();
-        check.addChessman(new Queen(new Position(6, 6), true));
-        assertEquals(board, check);
+        assertEquals(queen.getPosition(), newPosition);
     }
     
     
@@ -105,12 +101,11 @@ public class QueenTest {
         board.addChessman(queen);
         
         //двигаем ферзя влево и вверх
-        board.move(queen, new Position(0,1));
+        final Position newPosition = new Position(0,1);
+        board.move(queen, newPosition);
         
         //данные для проверки
-        ChessBoard check = new ChessBoard();
-        check.addChessman(new Queen(new Position(0,1), true));
-        assertEquals(board, check);
+        assertEquals(queen.getPosition(), newPosition);
     }
     
     /*
@@ -124,12 +119,11 @@ public class QueenTest {
         board.addChessman(queen);
         
         //двигаем ферзя вправо и вверх
-        board.move(queen, new Position(4,1));
+        final Position newPosition = new Position(4,1);
+        board.move(queen, newPosition);
         
         //данные для проверки
-        ChessBoard check = new ChessBoard();
-        check.addChessman(new Queen(new Position(4,1), true));
-        assertEquals(board, check);
+        assertEquals(queen.getPosition(), newPosition);
     }
     
     /*
@@ -143,12 +137,11 @@ public class QueenTest {
         board.addChessman(queen);
         
         //двигаем ферзя влево и вниз
-        board.move(queen, new Position(0,5));
+        final Position newPosition = new Position(0,5);
+        board.move(queen, newPosition);
         
         //данные для проверки
-        ChessBoard check = new ChessBoard();
-        check.addChessman(new Queen(new Position(0,5), true));
-        assertEquals(board, check);
+        assertEquals(queen.getPosition(), newPosition);
     }
     
     /*
@@ -162,12 +155,11 @@ public class QueenTest {
         board.addChessman(queen);
         
         //двигаем ферзя вправо и вверх
-        board.move(queen, new Position(4, 5));
+        final Position newPosition = new Position(4,5);
+        board.move(queen, newPosition);
         
         //данные для проверки
-        ChessBoard check = new ChessBoard();
-        check.addChessman(new Queen(new Position(4, 5), true));
-        assertEquals(board, check);
+        assertEquals(queen.getPosition(), newPosition);
     }
 
     /*
@@ -182,13 +174,11 @@ public class QueenTest {
         final Queen queenEnemy = new Queen(new Position(4, 5), false);
         board.addChessman(queenEnemy);
         
-        board.move(queen, new Position(4, 5));
+        final Position newPosition = new Position(4,5);
+        board.move(queen, newPosition);
         
         //данные для проверки
-        ChessBoard check = new ChessBoard();
-        check.addChessman(new Queen(new Position(4, 5), true));
-        assertEquals(board, check);
-        
+        assertEquals(queen.getPosition(), newPosition);
     }
     
     /*

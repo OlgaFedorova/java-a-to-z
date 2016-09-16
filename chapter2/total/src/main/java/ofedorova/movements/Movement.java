@@ -1,7 +1,5 @@
 package ofedorova.movements;
 
-import ofedorova.ChessBoard;
-import ofedorova.IllegalPositionError;
 import ofedorova.Position;
 import ofedorova.chessmen.Chessman;
 
@@ -16,10 +14,9 @@ public interface Movement {
     
     /*
     * The method implements a specific movement.
-    * @param chessboard, chessman, new position
-    * @return true or false
-    * @throws IllegalPositionError, if new position is incorrect.
+    * @param chessman, new position
+    * @return array of position on path moving.
     */
-    public boolean excute(ChessBoard board, Chessman chessman, Position newPosition) throws IllegalPositionError;    
+    public Position[] excute(Chessman chessman, Position newPosition);    
     
 }

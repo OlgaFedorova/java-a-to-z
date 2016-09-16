@@ -1,6 +1,5 @@
 package ofedorova.chessmen;
 
-import ofedorova.ChessBoard;
 import ofedorova.IllegalPositionError;
 import ofedorova.Position;
 
@@ -25,27 +24,38 @@ public class Pawn extends Chessman{
 
     /*
     * The method moves chessman to change position.
-    * @param board, new position
-    * @return true or false
+    * @param new position
+    * @return array of position on path moving.
     * @throws IllegalPositionError, if new position is incorrect.
     */
     @Override
-    public boolean changePosition(ChessBoard board, Position newPosition) throws IllegalPositionError {
-        boolean result = false;
-        
+    public Position[] changePosition(Position newPosition) throws IllegalPositionError {
+        Position[] result = null;
+        int index = 0;
         if(newPosition.getX() == this.getPosition().getX()
             &&((this.moveUp && this.getPosition().getY() == 6 
                     && this.getPosition().getY() - newPosition.getY()> 0
                     && this.getPosition().getY() - newPosition.getY()<= 2)
-            ||(!this.moveUp && this.getPosition().getY() == 1 
+            ||(this.moveUp && this.getPosition().getY() != 6 
+                    && this.getPosition().getY() - newPosition.getY()== 1))){
+            
+            result = new Position[this.getPosition().getY() - newPosition.getY()];
+            for(int y = this.getPosition().getY() - 1; y >= newPosition.getY(); y--){
+                result[index++] = new Position(this.getPosition().getX(), y);
+            }
+        }
+        else if(newPosition.getX() == this.getPosition().getX()
+            &&((!this.moveUp && this.getPosition().getY() == 1 
                     && newPosition.getY() - this.getPosition().getY()> 0
                     && newPosition.getY() - this.getPosition().getY()<= 2)
-            ||(this.moveUp && this.getPosition().getY() != 6 
-                    && this.getPosition().getY() - newPosition.getY()== 1)
+           
             ||(!this.moveUp && this.getPosition().getY() != 1 
                     && newPosition.getY() - this.getPosition().getY()== 1))){
-
-            result = board.checkStep(this, newPosition, newPosition.getX(), newPosition.getY());
+            
+            result = new Position[newPosition.getY() - this.getPosition().getY()];
+            for(int y = this.getPosition().getY() + 1; y <= newPosition.getY(); y++){
+                result[index++] = new Position(this.getPosition().getX(), y);
+            }
         }
         else {
             throw new IllegalPositionError("The pawn can't moves on this path.");

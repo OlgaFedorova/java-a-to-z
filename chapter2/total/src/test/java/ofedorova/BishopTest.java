@@ -28,12 +28,11 @@ public class BishopTest {
         board.addChessman(bishop);
         
         //двигаем слона влево и вверх
-        board.move(bishop, new Position(0,1));
+        final Position newPosition = new Position(0,1);
+        board.move(bishop, newPosition);
         
         //данные для проверки
-        ChessBoard check = new ChessBoard();
-        check.addChessman(new Bishop(new Position(0,1), true));
-        assertEquals(board, check);
+        assertEquals(bishop.getPosition(), newPosition);
     }
     
     /*
@@ -47,12 +46,11 @@ public class BishopTest {
         board.addChessman(bishop);
         
         //двигаем слона вправо и вверх
+        final Position newPosition = new Position(4,1);
         board.move(bishop, new Position(4,1));
         
         //данные для проверки
-        ChessBoard check = new ChessBoard();
-        check.addChessman(new Bishop(new Position(4,1), true));
-        assertEquals(board, check);
+        assertEquals(bishop.getPosition(), newPosition);
     }
     
     /*
@@ -66,12 +64,11 @@ public class BishopTest {
         board.addChessman(bishop);
         
         //двигаем слона влево и вниз
+        final Position newPosition = new Position(0,5);
         board.move(bishop, new Position(0,5));
         
         //данные для проверки
-        ChessBoard check = new ChessBoard();
-        check.addChessman(new Bishop(new Position(0,5), true));
-        assertEquals(board, check);
+        assertEquals(bishop.getPosition(), newPosition);
     }
     
     /*
@@ -85,12 +82,11 @@ public class BishopTest {
         board.addChessman(bishop);
         
         //двигаем слона вправо и вверх
+        final Position newPosition = new Position(4,5);
         board.move(bishop, new Position(4, 5));
         
         //данные для проверки
-        ChessBoard check = new ChessBoard();
-        check.addChessman(new Bishop(new Position(4, 5), true));
-        assertEquals(board, check);
+        assertEquals(bishop.getPosition(), newPosition);
     }
 
     /*
@@ -105,12 +101,11 @@ public class BishopTest {
         final Bishop bishopEnemy = new Bishop(new Position(4, 5), false);
         board.addChessman(bishopEnemy);
         
+        final Position newPosition = new Position(4,5);
         board.move(bishop, new Position(4, 5));
         
         //данные для проверки
-        ChessBoard check = new ChessBoard();
-        check.addChessman(new Bishop(new Position(4, 5), true));
-        assertEquals(board, check);
+       assertEquals(bishop.getPosition(), newPosition);
         
     }
     
