@@ -138,31 +138,4 @@ public class ChessBoard {
         chessman.setPosition(newPposition);
         this.addChessman(chessman);            
     }
-
-    @Override
-    public int hashCode() {
-        int hash = 5;
-        hash = 31 * hash + Arrays.deepHashCode(this.board);
-        return hash;
-    }
-
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        if (obj == null) {
-            return false;
-        }
-        if (getClass() != obj.getClass()) {
-            return false;
-        }
-        final ChessBoard other = (ChessBoard) obj;
-        if (!Arrays.deepEquals(this.board, other.board)) {
-            return false;
-        }
-        return true;
-    }
-    
-    
 }
