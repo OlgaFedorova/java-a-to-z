@@ -12,11 +12,20 @@ import ofedorova.models.Item;
  * @version 1
  */
 public class Tracker {
+    /**
+     * Array of items.
+     */
     private Item[] items = new Item[10];
+    /**
+     * Position for adding new item in the array "items".
+     */
     private int position = 0;
+    /**
+     * Random for generate id of item.
+     */
     private final Random RN = new Random();
     
-    /*
+    /**
     *The method adds new item into the array "items".
     *@param item
     *@return new item
@@ -32,7 +41,7 @@ public class Tracker {
         return item;
     }
     
-    /*
+    /**
     *The method adds new comment into the item.
     *@param comment
     *@return item
@@ -43,8 +52,8 @@ public class Tracker {
         return item;
     }
     
-    /*
-    *The method removes the item ftom the array "items".
+    /**
+    *The method removes the item from the array "items".
     *@param item
     *@return true or false
     */
@@ -69,7 +78,7 @@ public class Tracker {
         return isRemove;
     }
     
-    /*
+    /**
     *The method edits the item into the array "items".
     *@param item
     */
@@ -82,7 +91,7 @@ public class Tracker {
         }
     }
     
-    /*
+    /**
     *The method returns the array "items".
     *@return items
     */
@@ -92,15 +101,16 @@ public class Tracker {
         return result;
     }
      
-    /*
-    *The method returns the array "items" to using by filter.
-    *@return items
+    /**
+    * The method returns the array "items" to using by filter.
+    * @param filter for searching.
+    * @return items
     */
     public Item[] getItems(Filter filter){
         return filter.find(this.getItems());
     }
     
-    /*
+    /**
     *The method finds an item to using by field "id".
     *@param id
     *@return item
@@ -116,7 +126,7 @@ public class Tracker {
         return result;
     }
     
-    /*
+    /**
     *The method generates a value of field "id" for new item.
     *@return id
     */

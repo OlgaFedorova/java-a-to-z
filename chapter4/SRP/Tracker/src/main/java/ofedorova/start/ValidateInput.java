@@ -8,7 +8,7 @@ package ofedorova.start;
  */
 public class ValidateInput extends ConsoleInput{
 
-    /*
+    /**
     *The method asks number from the range.
     *@param question
     *@param range

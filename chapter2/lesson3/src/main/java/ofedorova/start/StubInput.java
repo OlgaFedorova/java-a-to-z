@@ -18,7 +18,7 @@ public class StubInput implements Input{
 
 
     /*
-    *The metod asks the question and returns a answer.
+    *The method asks the question and returns a answer.
     *@return answer
     */
     @Override
