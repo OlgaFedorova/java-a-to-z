@@ -13,7 +13,7 @@ class FilterByDescription extends Filter{
     }
 
    /*
-   *The metod finds items to using the field "Value" by the field "Description" of the class "Item".
+   *The method finds items to using the field "Value" by the field "Description" of the class "Item".
    *@return array of items
    */
     @Override

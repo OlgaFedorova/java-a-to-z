@@ -10,13 +10,13 @@ package ofedorova.start;
 public interface Input {
     
     /*
-    *The metod asks the question and returns a answer.
+    *The method asks the question and returns a answer.
     *@return answer
     */
     public String ask(String question);
     
     /*
-    *The metod asks number from the range.
+    *The method asks number from the range.
     *@param question
     *@param range
     *@return answer

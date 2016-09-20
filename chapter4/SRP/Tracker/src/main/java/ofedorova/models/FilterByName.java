@@ -9,13 +9,18 @@ package ofedorova.models;
  */
 class FilterByName extends Filter{
 
+   /**
+   * Allocates a new {@code FilterByName}
+   * @param value - uses for searching.
+   */
     public FilterByName(String value) {
         super(value);
     }
 
-   /*
-   *The method finds items to using the field "Value" by the field "Name" of the class "Item".
-   *@return array of items
+   /**
+   * The method finds items to using the field "Value" by the field "Name" of the class "Item".
+   * @param items - array for searching. 
+   * @return array of items
    */
     @Override
     public Item[] find(Item[] items) {
