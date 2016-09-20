@@ -10,11 +10,15 @@ import java.util.Scanner;
  */
 public class ConsoleInput implements Input{
     
+    /**
+     * Object for working with console.
+     */
     private final Scanner scanner = new Scanner(System.in);
 
-    /*
-    *The method asks the question and returns a answer.
-    *@return answer
+    /**
+    * The method asks the question and returns a answer.
+    * @param question for user
+    * @return answer from user
     */
     @Override
     public String ask(String question)  {
@@ -22,7 +26,7 @@ public class ConsoleInput implements Input{
         return scanner.next();
     }
 
-    /*
+    /**
     *The method asks number from the range.
     *@param question
     *@param range
@@ -31,6 +35,16 @@ public class ConsoleInput implements Input{
     @Override
     public int ask(String question, int[] range) {
         int key = Integer.valueOf(this.ask(question));
+        return this.checkNumberFromTheRange(key, range);
+    }
+    
+    /**
+     * The method checks to contains number "key" in the array of range.
+     * @param key
+     * @param range
+     * @return "key" if number is in the range, else throws "MenuOutException".
+     */
+    private int checkNumberFromTheRange(int key, int[] range){
         boolean exist = false;
         for(int value : range){
             if(value == key){

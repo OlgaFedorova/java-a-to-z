@@ -8,15 +8,23 @@ package ofedorova.models;
  */
 public abstract class Filter {
     
+  /**
+   * Value for searching.
+   */  
   protected String value;
 
+  /**
+   * Allocates a new {@code Filter}
+   * @param value - uses for searching.
+   */
   public Filter(String value) {
       this.value = value;
   }
 
-  /*
-   *The method finds items to using the field "Value". 
-   *@return array of items
+  /**
+   * The method finds items to using the field "Value". 
+   * @param items - array for searching. 
+   * @return array of items
    */
   public abstract Item[] find(Item[] items);
 

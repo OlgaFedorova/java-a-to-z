@@ -15,7 +15,7 @@ public abstract class Filter {
   }
 
   /*
-   *The metod finds items to using the field "Value". 
+   *The method finds items to using the field "Value". 
    *@return array of items
    */
   public abstract Item[] find(Item[] items);
