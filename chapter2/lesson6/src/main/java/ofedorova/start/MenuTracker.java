@@ -23,7 +23,7 @@ public class MenuTracker {
     }
     
     /*
-    * The metod fills the array "actions".
+    * The method fills the array "actions".
     */
     public void fillAction(){
         this.actions[0] = new AddNewItemAction();
@@ -37,14 +37,14 @@ public class MenuTracker {
     }
     
     /*
-    * The metod excutes selected action.
+    * The method excutes selected action.
     */
     public void select(int key){
         this.actions[key-1].excute();
     }
     
     /*
-    * The metod prints info about available actions.
+    * The method prints info about available actions.
     */
     public void show(){
         for(UserAction action : this.actions){
@@ -60,7 +60,7 @@ public class MenuTracker {
     }
     
     /*
-    * The metod returns range of numbers for actions.
+    * The method returns range of numbers for actions.
     */
     public int[] getRange(){
         int[] result = new int[this.actions.length];
@@ -73,17 +73,17 @@ public class MenuTracker {
     
     private interface UserAction {
         /*
-        * The metod returns key of action.
+        * The method returns key of action.
         */
         public int key();
         
         /*
-        * The metod excutes action.
+        * The method excutes action.
         */
         public void excute();
         
         /*
-        * The metod return info about action.
+        * The method return info about action.
         */
         public String info();
     }
@@ -104,7 +104,7 @@ public class MenuTracker {
         }
 
         /*
-        * The metod return info about action.
+        * The method return info about action.
         */
         @Override
         public String info(){
@@ -126,7 +126,7 @@ public class MenuTracker {
         }
 
         /*
-        * The metod returns key of action.
+        * The method returns key of action.
         */
         @Override
         public int key() {
@@ -134,7 +134,7 @@ public class MenuTracker {
         }
 
         /*
-        * The metod excutes action.
+        * The method excutes action.
         */
         @Override
         public void excute() {
@@ -157,7 +157,7 @@ public class MenuTracker {
         }
 
         /*
-        * The metod returns key of action.
+        * The method returns key of action.
         */
         @Override
         public int key() {
@@ -165,7 +165,7 @@ public class MenuTracker {
         }
 
         /*
-        * The metod excutes action.
+        * The method excutes action.
         */
         @Override
         public void excute() {
@@ -191,7 +191,7 @@ public class MenuTracker {
         }
 
         /*
-        * The metod returns key of action.
+        * The method returns key of action.
         */
         @Override
         public int key() {
@@ -199,7 +199,7 @@ public class MenuTracker {
         }
 
         /*
-        * The metod excutes action.
+        * The method excutes action.
         */
         @Override
         public void excute() {
@@ -221,7 +221,7 @@ public class MenuTracker {
         }
 
         /*
-        * The metod returns key of action.
+        * The method returns key of action.
         */
         @Override
         public int key() {
@@ -229,7 +229,7 @@ public class MenuTracker {
         }
 
         /*
-        * The metod excutes action.
+        * The method excutes action.
         */
         @Override
         public void excute() {
@@ -252,7 +252,7 @@ public class MenuTracker {
         }
 
         /*
-        * The metod returns key of action.
+        * The method returns key of action.
         */
         @Override
         public int key() {
@@ -260,7 +260,7 @@ public class MenuTracker {
         }
 
         /*
-        * The metod excutes action.
+        * The method excutes action.
         */
         @Override
         public void excute() {
@@ -285,7 +285,7 @@ public class MenuTracker {
         }
 
         /*
-        * The metod returns key of action.
+        * The method returns key of action.
         */
         @Override
         public int key() {
@@ -293,7 +293,7 @@ public class MenuTracker {
         }
 
         /*
-        * The metod excutes action.
+        * The method excutes action.
         */
         @Override
         public void excute() {
@@ -316,7 +316,7 @@ public class MenuTracker {
         }
 
         /*
-        * The metod returns key of action.
+        * The method returns key of action.
         */
         @Override
         public int key() {
@@ -324,7 +324,7 @@ public class MenuTracker {
         }
 
         /*
-        * The metod excutes action.
+        * The method excutes action.
         */
         @Override
         public void excute() {

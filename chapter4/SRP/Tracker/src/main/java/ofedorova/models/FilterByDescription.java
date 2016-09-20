@@ -1,21 +1,25 @@
-
 package ofedorova.models;
 
 /**
-  *The class uses for finding items by filter with field "name"
+  *The class uses for finding items by filter with field "description"
  * @author Olga Fedorova
  * @since 18.08.2016
  * @version 1
  */
-class FilterByName extends Filter{
+class FilterByDescription extends Filter{
 
-    public FilterByName(String value) {
+   /**
+   * Allocates a new {@code FilterByDescription}
+   * @param value - uses for searching.
+   */
+    public FilterByDescription(String value) {
         super(value);
     }
 
-   /*
-   *The method finds items to using the field "Value" by the field "Name" of the class "Item".
-   *@return array of items
+   /**
+   * The method finds items to using the field "Value" by the field "Description" of the class "Item".
+   * @param items - array for searching. 
+   * @return array of items
    */
     @Override
     public Item[] find(Item[] items) {
@@ -23,7 +27,7 @@ class FilterByName extends Filter{
         int position = 0;
         
         for (Item item : items) {
-            if(item.getName().contains(this.value)){
+            if(item.getDescription().contains(this.value)){
                 temp[position++] = item;
             }
         }

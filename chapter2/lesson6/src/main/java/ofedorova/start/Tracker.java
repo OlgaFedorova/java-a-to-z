@@ -17,7 +17,7 @@ public class Tracker {
     private final Random RN = new Random();
     
     /*
-    *The metod adds new item into the array "items".
+    *The method adds new item into the array "items".
     *@param item
     *@return new item
     */
@@ -33,7 +33,7 @@ public class Tracker {
     }
     
     /*
-    *The metod adds new comment into the item.
+    *The methodd adds new comment into the item.
     *@param comment
     *@return item
     */
@@ -44,7 +44,7 @@ public class Tracker {
     }
     
     /*
-    *The metod removes the item ftom the array "items".
+    *The method removes the item ftom the array "items".
     *@param item
     *@return true or false
     */
@@ -70,7 +70,7 @@ public class Tracker {
     }
     
     /*
-    *The metod edits the item into the array "items".
+    *The method edits the item into the array "items".
     *@param item
     */
     public void editItem(Item item){
@@ -83,7 +83,7 @@ public class Tracker {
     }
     
     /*
-    *The metod returns the array "items".
+    *The method returns the array "items".
     *@return items
     */
     public Item[] getItems(){
@@ -93,7 +93,7 @@ public class Tracker {
     }
      
     /*
-    *The metod returns the array "items" to using by filter.
+    *The method returns the array "items" to using by filter.
     *@return items
     */
     public Item[] getItems(Filter filter){
@@ -101,7 +101,7 @@ public class Tracker {
     }
     
     /*
-    *The metod finds an item to using by field "id".
+    *The method finds an item to using by field "id".
     *@param id
     *@return item
     */
@@ -117,7 +117,7 @@ public class Tracker {
     }
     
     /*
-    *The metod generates a value of field "id" for new item.
+    *The method generates a value of field "id" for new item.
     *@return id
     */
     private String generateId(){

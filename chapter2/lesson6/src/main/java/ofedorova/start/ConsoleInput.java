@@ -13,7 +13,7 @@ public class ConsoleInput implements Input{
     private final Scanner scanner = new Scanner(System.in);
 
     /*
-    *The metod asks the question and returns a answer.
+    *The method asks the question and returns a answer.
     *@return answer
     */
     @Override
@@ -23,7 +23,7 @@ public class ConsoleInput implements Input{
     }
 
     /*
-    *The metod asks number from the range.
+    *The method asks number from the range.
     *@param question
     *@param range
     *@return answer
