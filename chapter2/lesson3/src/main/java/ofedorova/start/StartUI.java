@@ -20,7 +20,7 @@ public class StartUI {
     }
     
     /*
-    * The metod implements to work with menu of profram.
+    * The method implements to work with menu of profram.
     */
     public void init(){
         

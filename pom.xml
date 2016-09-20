@@ -31,6 +31,7 @@
     <modules>
             <module>chapter1</module>
             <module>chapter2</module>
+			<module>chapter4</module>
 	</modules>
     <properties>
         <maven.compiler.source>1.7</maven.compiler.source>

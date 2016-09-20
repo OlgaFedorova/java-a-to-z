@@ -92,7 +92,7 @@ public class Item {
     }
     
     /*
-    *The metod add new comment in the array "Comments".
+    *The method add new comment in the array "Comments".
     *@param comment
     */
     public void addComment(Comment comment){

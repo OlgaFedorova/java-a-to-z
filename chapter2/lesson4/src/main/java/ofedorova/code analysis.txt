@@ -34,21 +34,21 @@ private String generateId(){
 interface Storage {
     
     /*
-    *The metod adds new item into the array "items".
+    *The method adds new item into the array "items".
     *@param item
     *@return new item
     */
     public Item addItem(Item item);
     
     /*
-    *The metod adds new comment into the item.
+    *The method adds new comment into the item.
     *@param comment
     *@return item
     */
     public Item addComment(Comment comment);
     
     /*
-    *The metod removes the item ftom the array "items".
+    *The method removes the item ftom the array "items".
     *@param item
     *@return true or false
     */

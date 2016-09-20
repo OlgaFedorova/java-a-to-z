@@ -10,7 +10,7 @@ package ofedorova.start;
 public interface Input {
     
     /*
-    *The metod asks the question and returns a answer.
+    *The method asks the question and returns a answer.
     *@return answer
     */
     public String ask(String question);

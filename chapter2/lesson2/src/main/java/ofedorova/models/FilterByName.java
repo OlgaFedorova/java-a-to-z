@@ -14,7 +14,7 @@ class FilterByName extends Filter{
     }
 
    /*
-   *The metod finds items to using the field "Value" by the field "Name" of the class "Item".
+   *The method finds items to using the field "Value" by the field "Name" of the class "Item".
    *@return array of items
    */
     @Override
