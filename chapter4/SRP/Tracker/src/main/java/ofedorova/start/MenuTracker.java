@@ -12,17 +12,34 @@ import ofedorova.models.Item;
  */
 public class MenuTracker {
     
-    private Input input;
-    private Tracker tracker;
-    private UserAction[] actions = new UserAction[7];
+    /**
+     * Object for input info.
+     */
+    private final Input input;
+    /**
+     * Storage of items.
+     */
+    private final Tracker tracker;
+    /**
+     * Array with actions for user.
+     */
+    private final UserAction[] actions = new UserAction[7];
+    /**
+     * Sign that needs to exit from program.
+     */
     private boolean exit = false;
     
+    /**
+     * Allocates a new {@code MenuTracker}
+     * @param input
+     * @param tracker 
+     */
     public MenuTracker(Input input, Tracker tracker) {
         this.input = input;
         this.tracker = tracker;
     }
     
-    /*
+    /**
     * The method fills the array "actions".
     */
     public void fillAction(){
@@ -36,44 +53,95 @@ public class MenuTracker {
         
     }
     
-    /*
+    /**
     * The method excutes selected action.
+    * @param key for action.
     */
     public void select(int key){
         this.actions[key-1].excute();
     }
     
-    /*
+    /**
     * The method prints info about available actions.
     */
     public void show(){
-        for(UserAction action : actions){
+        for(UserAction action : this.actions){
             System.out.println(action.info());
         }
     }
 
-    /*
+    /**
     * Getter for the field "exit".
+    * @return value of field "exit".
     */
     public boolean isExit() {
         return this.exit;
     }
     
+    /**
+    * The method returns range of numbers for actions.
+    * @return array of range numbers for actions.
+    */
+    public int[] getRange(){
+        int[] result = new int[this.actions.length];
+        int position = 0;
+        for (UserAction action: this.actions){
+            result[position++] = action.key();
+        }
+        return result;
+    }
+    
+    /**
+     * Interface implements model of user action.
+     */
     private interface UserAction {
-        /*
+        /**
         * The method returns key of action.
+        * @return key for action
         */
         public int key();
         
-        /*
+        /**
         * The method excutes action.
         */
         public void excute();
         
-        /*
+        /**
         * The method return info about action.
+        * @return a string representation
         */
         public String info();
+    }
+    
+    /**
+    * The class implements abstract action.
+    * @author Olga Fedorova
+    * @since 28.08.2016
+    * @version 1
+    */
+    private abstract class BaseAction implements UserAction{
+        /**
+         * Name of action.
+         */
+        private String name;
+
+        /**
+         * Allocates a new {@code BaseAction}
+         * @param name 
+         */
+        public BaseAction(String name) {
+            this.name = name;
+        }
+
+        /**
+        * The methodd return info about action.
+        * @return a string representation
+        */
+        @Override
+        public String info(){
+            return String.format("%s. %s", this.key(), this.name);
+        }
+
     }
 
     /**
@@ -82,17 +150,25 @@ public class MenuTracker {
     * @since 27.08.2016
     * @version 1
     */
-    private class AddNewItemAction implements UserAction{
+    private class AddNewItemAction extends BaseAction{
 
-        /*
+        /**
+         * Allocates a new {@code AddNewItemAction}
+         */
+        public AddNewItemAction() {
+            super("Add new item");
+        }
+
+        /**
         * The method returns key of action.
+        * @return key for action
         */
         @Override
         public int key() {
             return 1;
         }
 
-        /*
+        /**
         * The method excutes action.
         */
         @Override
@@ -100,14 +176,6 @@ public class MenuTracker {
             String name = input.ask("Input a name of item: ");
             String description = input.ask("Input a description of item: ");
             tracker.addItem(new Item(name, description));
-        }
-
-        /*
-        * The method return info about action.
-        */
-        @Override
-        public String info() {
-            return String.format("%s. %s", this.key(), "Add new item");
         }
     }
     
@@ -117,17 +185,25 @@ public class MenuTracker {
     * @since 27.08.2016
     * @version 1
     */
-    private class EditAction implements UserAction{
+    private class EditAction extends BaseAction{
 
-        /*
+        /**
+         * Allocates a new {@code EditAction}
+         */
+        public EditAction() {
+            super("Edit the item");
+        }
+
+        /**
         * The method returns key of action.
+        * @return key for action
         */
         @Override
         public int key() {
             return 2;
         }
 
-        /*
+        /**
         * The method excutes action.
         */
         @Override
@@ -139,14 +215,6 @@ public class MenuTracker {
             itemEdit.setId(id);
             tracker.editItem(itemEdit);
         }
-
-        /*
-        * The method return info about action.
-        */
-        @Override
-        public String info() {
-            return String.format("%s. %s", this.key(), "Edit the item");
-        }
     }
     
     /**
@@ -155,31 +223,31 @@ public class MenuTracker {
     * @since 27.08.2016
     * @version 1
     */
-    private class RemoveAction implements UserAction{
+    private class RemoveAction extends BaseAction{
 
-        /*
+        /**
+         * Allocates a new {@code RemoveAction}
+         */
+        public RemoveAction() {
+            super("Remove the item");
+        }
+
+        /**
         * The method returns key of action.
+        * @return key for action
         */
         @Override
         public int key() {
             return 3;
         }
 
-        /*
+        /**
         * The method excutes action.
         */
         @Override
         public void excute() {
             String id = input.ask("Input the id of item: ");
             tracker.removeItem(tracker.findById(id));
-        }
-
-        /*
-        * The method return info about action.
-        */
-        @Override
-        public String info() {
-            return String.format("%s. %s", this.key(), "Remove the item");
         }
     }
     
@@ -189,17 +257,25 @@ public class MenuTracker {
     * @since 27.08.2016
     * @version 1
     */
-    private class ShowListItemsAction implements UserAction{
+    private class ShowListItemsAction extends BaseAction{
 
-        /*
+        /**
+         * Allocates a new {@code ShowListItemsAction}
+         */
+        public ShowListItemsAction() {
+            super("Show all items");
+        }
+
+        /**
         * The method returns key of action.
+        * @return key for action
         */
         @Override
         public int key() {
             return 4;
         }
 
-        /*
+        /**
         * The method excutes action.
         */
         @Override
@@ -207,14 +283,6 @@ public class MenuTracker {
             for(Item item : tracker.getItems()){
                 System.out.println(item);
             }
-        }
-
-        /*
-        * The method return info about action.
-        */
-        @Override
-        public String info() {
-            return String.format("%s. %s", this.key(), "Show all items");
         }
     }
     
@@ -224,17 +292,25 @@ public class MenuTracker {
     * @since 27.08.2016
     * @version 1
     */
-    private class ShowListItemsByFilterAction implements UserAction{
+    private class ShowListItemsByFilterAction extends BaseAction{
 
-        /*
+        /**
+         * Allocates a new {@code ShowListItemsByFilterAction}
+         */
+        public ShowListItemsByFilterAction() {
+            super("Show items by filter");
+        }
+
+        /**
         * The method returns key of action.
+        * @return key for action
         */
         @Override
         public int key() {
             return 5;
         }
 
-        /*
+        /**
         * The method excutes action.
         */
         @Override
@@ -245,14 +321,6 @@ public class MenuTracker {
                 System.out.println(item);
             }
         }
-
-        /*
-        * The method return info about action.
-        */
-        @Override
-        public String info() {
-            return String.format("%s. %s", this.key(), "Show items by filter");
-        }
     }
     
     /**
@@ -261,17 +329,25 @@ public class MenuTracker {
     * @since 27.08.2016
     * @version 1
     */
-    private class AddNewCommentAction implements UserAction{
+    private class AddNewCommentAction extends BaseAction{
 
-        /*
+        /**
+         * Allocates a new {@code AddNewCommentAction}
+         */
+        public AddNewCommentAction() {
+            super("Add new comment into the item");
+        }
+
+        /**
         * The method returns key of action.
+        * @return key for action.
         */
         @Override
         public int key() {
             return 6;
         }
 
-        /*
+        /**
         * The method excutes action.
         */
         @Override
@@ -279,14 +355,6 @@ public class MenuTracker {
             String id = input.ask("Input the id of item: ");
             String comment = input.ask("Input new comment for the item: ");
             tracker.addComment(new Comment(id, comment));
-        }
-
-        /*
-        * The method return info about action.
-        */
-        @Override
-        public String info() {
-            return String.format("%s. %s", this.key(), "Add new comment into the item");
         }
     }
     
@@ -296,17 +364,25 @@ public class MenuTracker {
     * @since 27.08.2016
     * @version 1
     */
-    private class ExitAction implements UserAction{
+    private class ExitAction extends BaseAction{
 
-        /*
+        /**
+         * Allocates a new {@code ExitAction}
+         */
+        public ExitAction() {
+            super("Exit");
+        }
+
+        /**
         * The method returns key of action.
+        * @return key for action
         */
         @Override
         public int key() {
             return 7;
         }
 
-        /*
+        /**
         * The method excutes action.
         */
         @Override
@@ -316,15 +392,5 @@ public class MenuTracker {
                 exit = true;
             }
         }
-
-        /*
-        * The method return info about action.
-        */
-        @Override
-        public String info() {
-            return String.format("%s. %s", this.key(), "Exit");
-        }
     }
-    
-    
 }
