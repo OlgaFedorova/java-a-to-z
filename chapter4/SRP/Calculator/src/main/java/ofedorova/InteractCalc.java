@@ -42,6 +42,10 @@ public class InteractCalc extends Calculator{
      * Object for working with console.
      */
     private final BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+    /**
+     * Object for logging exception.
+     */
+    public final static Logger LOGER = Logger.getLogger(InteractCalc.class.getName());
 
     /**
      * Allocates a new {@code InteractCalc}
@@ -89,24 +93,52 @@ public class InteractCalc extends Calculator{
     * The method asks the question and returns an answer.
     * @param question for user
     * @return answer from user
-    * @throws IOException
     */
-    public String ask(String question) throws IOException  {
-        System.out.println(question);
-        return reader.readLine();
+    public String ask(String question)  {
+        String result = null;
+        try {
+            System.out.println(question);
+            result = reader.readLine();
+        } catch (IOException ex) {
+            LOGER.log(Level.SEVERE, null, ex);
+        }
+        return result;
+    }
+    
+    /**
+    * The method asks enter number and return it.
+    * @param question for user
+    * @return number
+    */
+    public double askDouble(String question) {
+        boolean isNumber = false;
+        double number = 0;
+        while(!isNumber){
+            try {
+                number = Double.parseDouble(this.ask(question));
+                isNumber = true;
+            } catch (NumberFormatException ex) {
+                System.err.println("Incorrect input double number. Try again.");
+            }
+        }
+        return number;
     }
     
     /**
     * The method excutes selected action.
     * @param key for action.
+    * @return true or false
     */
-    public void select(String key){
+    public boolean select(String key){
+        boolean isSelect = false;
         for(Action action : this.actions){
             if(key != null && key.equalsIgnoreCase(action.getKey())){
                 action.excute();
+                isSelect = true;
                 break;
             }
         }
+        return isSelect;
     }
     
     /**
@@ -136,14 +168,13 @@ public class InteractCalc extends Calculator{
     public void init(){
         this.show();
         while (!this.isExit()) {
-            try {
-                if(!this.useLastCalculation){
-                    this.first = new Double(this.ask("Input first operand:"));
-                }
-                this.select(this.ask("Select the operation:"));
-            } catch (IOException ex) {
-                Logger.getLogger(InteractCalc.class.getName()).log(Level.SEVERE, null, ex);
+            if(!this.useLastCalculation){
+                this.first = this.askDouble("Input first operand:");
             }
+            while(this.select(this.ask("Select the operation:")) != true){
+                System.out.println("Incorrect select operation. Try again.");
+            }
+
         }
         System.out.println("Bye-bye!");
     }
@@ -219,14 +250,10 @@ public class InteractCalc extends Calculator{
         */
         @Override
         public void excute() {
-            try {
-                InteractCalc.this.second = new Double(InteractCalc.this.ask("Input second operand:"));
-                InteractCalc.this.add(InteractCalc.this.first, InteractCalc.this.second);
-                InteractCalc.this.setOperandsForUseLastCalculation();
-                System.out.println("Result: " + InteractCalc.this.getResult());
-            } catch (IOException ex) {
-                Logger.getLogger(InteractCalc.class.getName()).log(Level.SEVERE, null, ex);
-            }
+            InteractCalc.this.second = new Double(InteractCalc.this.ask("Input second operand:"));
+            InteractCalc.this.add(InteractCalc.this.first, InteractCalc.this.second);
+            InteractCalc.this.setOperandsForUseLastCalculation();
+            System.out.println("Result: " + InteractCalc.this.getResult());
         }
     }
     
@@ -252,14 +279,10 @@ public class InteractCalc extends Calculator{
         */
         @Override
         public void excute() {
-            try {
-                InteractCalc.this.second = new Double(InteractCalc.this.ask("Input second operand:"));
-                InteractCalc.this.substruct(InteractCalc.this.first, InteractCalc.this.second);
-                InteractCalc.this.setOperandsForUseLastCalculation();
-                System.out.println("Result: " + InteractCalc.this.getResult());
-            } catch (IOException ex) {
-                Logger.getLogger(InteractCalc.class.getName()).log(Level.SEVERE, null, ex);
-            }
+            InteractCalc.this.second = new Double(InteractCalc.this.ask("Input second operand:"));
+            InteractCalc.this.substruct(InteractCalc.this.first, InteractCalc.this.second);
+            InteractCalc.this.setOperandsForUseLastCalculation();
+            System.out.println("Result: " + InteractCalc.this.getResult());
         }
     }
     
@@ -285,14 +308,10 @@ public class InteractCalc extends Calculator{
         */
         @Override
         public void excute() {
-            try {
-                InteractCalc.this.second = new Double(InteractCalc.this.ask("Input second operand:"));
-                InteractCalc.this.div(InteractCalc.this.first, InteractCalc.this.second);
-                InteractCalc.this.setOperandsForUseLastCalculation();
-                System.out.println("Result: " + InteractCalc.this.getResult());
-            } catch (IOException ex) {
-                Logger.getLogger(InteractCalc.class.getName()).log(Level.SEVERE, null, ex);
-            }
+            InteractCalc.this.second = new Double(InteractCalc.this.ask("Input second operand:"));
+            InteractCalc.this.div(InteractCalc.this.first, InteractCalc.this.second);
+            InteractCalc.this.setOperandsForUseLastCalculation();
+            System.out.println("Result: " + InteractCalc.this.getResult());
         }
     }
     
@@ -318,14 +337,10 @@ public class InteractCalc extends Calculator{
         */
         @Override
         public void excute() {
-            try {
-                InteractCalc.this.second = new Double(InteractCalc.this.ask("Input second operand:"));
-                InteractCalc.this.multiple(InteractCalc.this.first, InteractCalc.this.second);
-                InteractCalc.this.setOperandsForUseLastCalculation();
-                System.out.println("Result: " + InteractCalc.this.getResult());
-            } catch (IOException ex) {
-                Logger.getLogger(InteractCalc.class.getName()).log(Level.SEVERE, null, ex);
-            }
+            InteractCalc.this.second = new Double(InteractCalc.this.ask("Input second operand:"));
+            InteractCalc.this.multiple(InteractCalc.this.first, InteractCalc.this.second);
+            InteractCalc.this.setOperandsForUseLastCalculation();
+            System.out.println("Result: " + InteractCalc.this.getResult());
         }
     }
     
@@ -375,13 +390,9 @@ public class InteractCalc extends Calculator{
         */
         @Override
         public void excute() {
-            try {
-                String answerExit = InteractCalc.this.ask("Are you sure? Y/N: ");
-                if(answerExit.equalsIgnoreCase("Y")){
-                    InteractCalc.this.exit = true;
-                }
-            } catch (IOException ex) {
-                Logger.getLogger(InteractCalc.class.getName()).log(Level.SEVERE, null, ex);
+            String answerExit = InteractCalc.this.ask("Are you sure? Y/N: ");
+            if(answerExit.equalsIgnoreCase("Y")){
+                InteractCalc.this.exit = true;
             }
         }
     }
