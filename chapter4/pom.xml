@@ -27,6 +27,7 @@
     </build>
     <modules>
         <module>SRP</module>
+		<module>OCP</module>
     </modules>
     <properties>
         <maven.compiler.source>1.7</maven.compiler.source>

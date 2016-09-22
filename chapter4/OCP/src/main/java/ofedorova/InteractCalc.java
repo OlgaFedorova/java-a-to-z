@@ -29,7 +29,11 @@ public class InteractCalc extends Calculator{
     /**
      * Array of action menu
      */
-    private final Action[] actions = new Action[6];
+    private Action[] actions = new Action[6];
+    /**
+     * Position for adding new action in the array "actions".
+     */
+    private int position = 0;
     /**
      * Sign that needs to exit from program.
      */
@@ -37,11 +41,7 @@ public class InteractCalc extends Calculator{
     /**
      * First operand.
      */
-    private double first;
-    /**
-     * Second operand.
-     */
-    private double second;
+    private double operand;
     /**
      * Sign that needs to use last calculation.
      */
@@ -70,22 +70,36 @@ public class InteractCalc extends Calculator{
     public void setExit(boolean exit) {
         this.exit = exit;
     }
+
+    /**
+     * Getter for field "operand"
+     * @return 
+     */
+    public double getOperand() {
+        return this.operand;
+    }
+
+    /**
+     * Setter for field "operand"
+     * @param operand 
+     */
+    public void setOperand(double operand) {
+        this.operand = operand;
+    }
     
     /**
-     * The methods sets values for the first and the second operands for use last calculation.
+     * The methods sets values the operand for use last calculation.
      */
     public void setOperandsForUseLastCalculation(){
-        this.first = this.getResult();
-        this.second = 0;
+        this.operand = this.getResult();
         this.useLastCalculation = true;
     }
     
     /**
-     * The methods sets values for the first and the second operands for start calculation.
+     * The methods sets values operand for start calculation.
      */
     public void setOperandsForStart(){
-        this.first = 0;
-        this.second = 0;
+        this.operand = 0;
         this.useLastCalculation = false;
     }
     
@@ -131,7 +145,7 @@ public class InteractCalc extends Calculator{
     */
     public boolean select(String key){
         boolean isSelect = false;
-        for(Action action : this.actions){
+        for(Action action : this.getActions()){
             if(key != null && key.equalsIgnoreCase(action.getKey())){
                 action.excute();
                 isSelect = true;
@@ -145,7 +159,7 @@ public class InteractCalc extends Calculator{
     * The method prints info about available actions.
     */
     public void show(){
-        for(Action action : this.actions){
+        for(Action action : this.getActions()){
             System.out.println(action.info());
         }
     }
@@ -154,12 +168,35 @@ public class InteractCalc extends Calculator{
     * The method fills the array "actions".
     */
     public void fillAction(){
-        this.actions[0] = new AddingAction();
-        this.actions[1] = new SubtractionAction();
-        this.actions[2] = new DivisionAction();
-        this.actions[3] = new MultiplicationAction();
-        this.actions[4] = new ClearAction();
-        this.actions[5] = new ExitAction();
+        this.addAction(new AddingAction());
+        this.addAction(new SubtractionAction());
+        this.addAction(new DivisionAction());
+        this.addAction(new MultiplicationAction());
+        this.addAction(new ClearAction());
+        this.addAction(new ExitAction());
+    }
+    
+    /**
+     * The method adds new Action into the array "actions".
+     * @param action 
+     */
+    public void addAction(Action action){
+        if (this.position == this.actions.length){
+            Action[] temp = new Action[position + 10];
+            System.arraycopy(this.actions, 0, temp, 0, position);
+            this.actions = temp;    
+        }
+        this.actions[position++] = action;
+    }
+
+    /**
+     * Getter for field "actions"
+     * @return array of actions
+     */
+    public Action[] getActions() {
+        Action[] result = new Action[position];
+        System.arraycopy(this.actions, 0, result, 0, position);
+        return result;
     }
  
     /**
@@ -169,7 +206,7 @@ public class InteractCalc extends Calculator{
         this.show();
         while (!this.isExit()) {
             if(!this.useLastCalculation){
-                this.first = this.askDouble("Input first operand:");
+                this.operand = this.askDouble("Input operand:");
             }
             while(this.select(this.ask("Select the operation:")) != true){
                 System.out.println("Incorrect select operation. Try again.");
@@ -177,6 +214,13 @@ public class InteractCalc extends Calculator{
 
         }
         System.out.println("Bye-bye!");
+    }
+    
+    /**
+     * The method print result in console
+     */
+    public void showResult(){
+        System.out.println(String.format("Result: %s", InteractCalc.this.getResult()));
     }
     
     /**
@@ -250,10 +294,10 @@ public class InteractCalc extends Calculator{
         */
         @Override
         public void excute() {
-            InteractCalc.this.second = new Double(InteractCalc.this.ask("Input second operand:"));
-            InteractCalc.this.add(InteractCalc.this.first, InteractCalc.this.second);
+            double second = new Double(InteractCalc.this.ask("Input operand:"));
+            InteractCalc.this.add(InteractCalc.this.operand, second);
             InteractCalc.this.setOperandsForUseLastCalculation();
-            System.out.println(String.format("Result: %s", InteractCalc.this.getResult()));
+            InteractCalc.this.showResult();
         }
     }
     
@@ -279,10 +323,10 @@ public class InteractCalc extends Calculator{
         */
         @Override
         public void excute() {
-            InteractCalc.this.second = new Double(InteractCalc.this.ask("Input second operand:"));
-            InteractCalc.this.substruct(InteractCalc.this.first, InteractCalc.this.second);
+            double second = new Double(InteractCalc.this.ask("Input operand:"));
+            InteractCalc.this.substruct(InteractCalc.this.operand, second);
             InteractCalc.this.setOperandsForUseLastCalculation();
-            System.out.println(String.format("Result: %s", InteractCalc.this.getResult()));
+            InteractCalc.this.showResult();
         }
     }
     
@@ -308,10 +352,10 @@ public class InteractCalc extends Calculator{
         */
         @Override
         public void excute() {
-            InteractCalc.this.second = new Double(InteractCalc.this.ask("Input second operand:"));
-            InteractCalc.this.div(InteractCalc.this.first, InteractCalc.this.second);
+            double second = new Double(InteractCalc.this.ask("Input operand:"));
+            InteractCalc.this.div(InteractCalc.this.operand, second);
             InteractCalc.this.setOperandsForUseLastCalculation();
-            System.out.println(String.format("Result: %s", InteractCalc.this.getResult()));
+            InteractCalc.this.showResult();
         }
     }
     
@@ -337,10 +381,10 @@ public class InteractCalc extends Calculator{
         */
         @Override
         public void excute() {
-            InteractCalc.this.second = new Double(InteractCalc.this.ask("Input second operand:"));
-            InteractCalc.this.multiple(InteractCalc.this.first, InteractCalc.this.second);
+            double second = new Double(InteractCalc.this.ask("Input operand:"));
+            InteractCalc.this.multiple(InteractCalc.this.operand, second);
             InteractCalc.this.setOperandsForUseLastCalculation();
-            System.out.println(String.format("Result: %s", InteractCalc.this.getResult()));
+            InteractCalc.this.showResult();
         }
     }
     
