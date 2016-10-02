@@ -9,18 +9,14 @@ import ofedorova.foods.Food;
  * @version 1
  */
 public class Warehouse extends AbstractStorageOfFoods{
-
     /**
-     * The method adds new food into array "foods".
-     * @param food
-     * @return 
-     *      true - if food is adds success, 
-     *      false - else food is adds unsuccess
+     * Start constant for allowable shelf life of product in percent
      */
-    @Override
-    public boolean add(Food food) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+    private static final int START_ALLOWABLE_SHELF_LIFE_OF_PRODUCT_IN_PERSENT = 0;
+    /**
+     * End constant for allowable shelf life of product in percent
+     */
+    private static final int END_ALLOWABLE_SHELF_LIFE_OF_PRODUCT_IN_PERSENT = 25;
 
     /**
      * The method checks a validate the shelf life of product for this storage
@@ -28,10 +24,10 @@ public class Warehouse extends AbstractStorageOfFoods{
      * @return 
      *      true - if he shelf life of product is validate
      *      false - else
-     */     
+     */   
     @Override
-    public boolean checkShelfLifeOfProduct(int shelfLifeOfProduct) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public boolean checkShelfLifeOfProduct(int shelfLifeOfProduct){
+        return  shelfLifeOfProduct >= START_ALLOWABLE_SHELF_LIFE_OF_PRODUCT_IN_PERSENT &&
+                shelfLifeOfProduct < END_ALLOWABLE_SHELF_LIFE_OF_PRODUCT_IN_PERSENT;
     }
-    
 }
