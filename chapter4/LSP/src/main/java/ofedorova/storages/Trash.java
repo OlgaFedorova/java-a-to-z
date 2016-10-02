@@ -9,29 +9,21 @@ import ofedorova.foods.Food;
  * @version 1
  */
 public class Trash extends AbstractStorageOfFoods{
-
     /**
-     * The method adds new food into array "foods".
-     * @param food
-     * @return 
-     *      true - if food is adds success, 
-     *      false - else food is adds unsuccess
+     * Constant for allowable shelf life of product in percent
      */
-    @Override
-    public boolean add(Food food) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
+    private static final int ALLOWABLE_SHELF_LIFE_OF_PRODUCT_IN_PERSENT = 100;
+    
     /**
      * The method checks a validate the shelf life of product for this storage
      * @param shelfLifeOfProduct
      * @return 
      *      true - if he shelf life of product is validate
      *      false - else
-     */     
+     */   
     @Override
-    public boolean checkShelfLifeOfProduct(int shelfLifeOfProduct) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public boolean checkShelfLifeOfProduct(int shelfLifeOfProduct){
+        return shelfLifeOfProduct > ALLOWABLE_SHELF_LIFE_OF_PRODUCT_IN_PERSENT;
     }
     
 }

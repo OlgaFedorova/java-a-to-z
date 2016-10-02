@@ -45,5 +45,37 @@ public abstract class Food {
         this.price = price;
         this.discount = discount;
     }
-    
+
+    /**
+     * Getter for field "create date"
+     * @return 
+     */
+    public Date getCreateDate() {
+        return this.createDate;
+    }
+
+    /**
+     * Getter for field "expaire date"
+     * @return 
+     */
+    public Date getExpaireDate() {
+        return this.expaireDate;
+    }
+
+    /**
+     * Setter for field "price" by discount
+     * @return 
+     */
+    public void setPriceByDiccount(){
+        this.price = this.price - this.discount;
+    }
+
+    /**
+     * Getter for field "price"
+     * @return 
+     */
+    public double getPrice() {
+        return price;
+    }
+  
 }
