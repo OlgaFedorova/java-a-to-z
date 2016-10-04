@@ -61,6 +61,7 @@ public class ControllQuality {
     public void control(Food food){
         this.reallocateFood(food);
         this.lowPrice(food);
+        //TEST
     }
     
     /**
