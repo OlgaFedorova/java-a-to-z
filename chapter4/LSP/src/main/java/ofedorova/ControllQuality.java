@@ -1,17 +1,20 @@
 package ofedorova;
 
-import java.util.Calendar;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import ofedorova.foods.Food;
 import ofedorova.storages.AbstractStorageOfFoods;
 
 /**
  * The class implements handler for reallocating foods into the storage.
+ *
  * @author Olga Fedorova
  * @since 27.09.2016
  * @version 1
  */
 public class ControllQuality {
+
     /**
      * Start constant for low price
      */
@@ -21,82 +24,56 @@ public class ControllQuality {
      */
     private static final int END_SHELF_LIFE_OF_PRODUCT_IN_PERSENT_FOR_LOW_PRICE = 100;
     /**
-     * Array of storages in a company.
+     * List of storages in a company.
      */
-    private AbstractStorageOfFoods[] storages = new AbstractStorageOfFoods[3];
-    /**
-     * Position for adding new AbstractStorageOfFoods in the array "storages".
-     */
-    private int position = 0;
-    /**
-     * Current date
-     */
-    private Date currentDate = new Date();
+    private final List<AbstractStorageOfFoods> storages = new ArrayList<>();
 
     /**
-     * Setter for field "current date"
-     * @param currentDate 
+     * The method adds a new storage into list "storages".
+     *
+     * @param storage
      */
-    public void setCurrentDate(Date currentDate) {
-        this.currentDate = currentDate;
+    public void addStorage(AbstractStorageOfFoods storage) {
+        storages.add(storage);
     }
-    
+
     /**
-     * The method adds a new storage into array "storages".
-     * @param storage 
+     * The main method controls quality of food
+     *
+     * @param food
+     * @param currentDate
      */
-    public void addStorage(AbstractStorageOfFoods storage){
-        if (this.position == this.storages.length){
-            AbstractStorageOfFoods[] temp = new AbstractStorageOfFoods[position + 3];
-            System.arraycopy(this.storages, 0, temp, 0, position);
-            this.storages = temp;    
-        }
-        this.storages[position++] = storage;
+    public void control(Food food, Date currentDate) {
+        this.reallocateFood(food, currentDate);
+        this.lowPrice(food, currentDate);
     }
-    
+
     /**
-     * The main method controls quality of food 
-     * @param food 
+     * The methods reallocate food into the storage depending the shelf life of
+     * product.
+     *
+     * @param food
+     * @param currentDate
      */
-    public void control(Food food){
-        this.reallocateFood(food);
-        this.lowPrice(food);
-        //TEST
-        //TEST2
-        //TEST3
-    }
-    
-    /**
-     * The methods reallocate food into the storage depending the shelf life of product.
-     * @param food 
-     */
-    private void reallocateFood(Food food){
-        for(AbstractStorageOfFoods storage : storages){
-            if(storage != null && storage.checkShelfLifeOfProduct(this.getShelfLifeOfProductInPercent(food))){
+    private void reallocateFood(Food food, Date currentDate) {
+        for (AbstractStorageOfFoods storage : storages) {
+            if (storage != null && storage.isAppropriate(food, currentDate)) {
                 storage.add(food);
                 break;
             }
         }
     }
-    
+
     /**
      * The methods low price of food.
-     * @param food 
+     *
+     * @param food
+     * @param currentDate
      */
-    private void lowPrice(Food food){
-        if(this.getShelfLifeOfProductInPercent(food) > START_SHELF_LIFE_OF_PRODUCT_IN_PERSENT_FOR_LOW_PRICE &&
-                this.getShelfLifeOfProductInPercent(food) <= END_SHELF_LIFE_OF_PRODUCT_IN_PERSENT_FOR_LOW_PRICE){
+    private void lowPrice(Food food, Date currentDate) {
+        if (food.getShelfLifeOfProductInPercent(currentDate) > START_SHELF_LIFE_OF_PRODUCT_IN_PERSENT_FOR_LOW_PRICE
+                && food.getShelfLifeOfProductInPercent(currentDate) <= END_SHELF_LIFE_OF_PRODUCT_IN_PERSENT_FOR_LOW_PRICE) {
             food.setPriceByDiccount();
         }
-    }
-    
-    /**
-     * The method returns a value the shelf life of product in percent.
-     * @param food
-     * @return life of product in percent
-     */
-    public int getShelfLifeOfProductInPercent(Food food){
-        return Math.round((float) (currentDate.getTime() - food.getCreateDate().getTime())/
-                           (food.getExpaireDate().getTime() - food.getCreateDate().getTime()) *100);
     }
 }
