@@ -46,21 +46,6 @@ public abstract class Food {
         this.discount = discount;
     }
 
-    /**
-     * Getter for field "create date"
-     * @return 
-     */
-    public Date getCreateDate() {
-        return this.createDate;
-    }
-
-    /**
-     * Getter for field "expaire date"
-     * @return 
-     */
-    public Date getExpaireDate() {
-        return this.expaireDate;
-    }
 
     /**
      * Setter for field "price" by discount
@@ -76,6 +61,15 @@ public abstract class Food {
      */
     public double getPrice() {
         return price;
+    }
+    
+    /**
+     * The method returns a value the shelf life of product in percent.
+     * @return life of product in percent
+     */
+    public int getShelfLifeOfProductInPercent(Date currentDate){
+        return Math.round((float) (currentDate.getTime() - this.createDate.getTime())/
+                           (this.expaireDate.getTime() - this.createDate.getTime()) *100);
     }
   
 }
