@@ -39,13 +39,4 @@ public abstract class AbstractStorageOfFoods {
      * @return true - if food is appropriate false - else
      */
     public abstract boolean isAppropriate(Food food, Date currentDate);
-
-    /**
-     * Getter for field "foods".
-     *
-     * @return
-     */
-    public List<Food> getFoods() {
-        return Collections.unmodifiableList(foods);
-    }
 }

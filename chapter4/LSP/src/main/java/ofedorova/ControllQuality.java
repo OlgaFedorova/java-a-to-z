@@ -42,10 +42,12 @@ public class ControllQuality {
      *
      * @param food
      * @param currentDate
+     * @return storage, where reallocate food
      */
-    public void control(Food food, Date currentDate) {
-        this.reallocateFood(food, currentDate);
+    public AbstractStorageOfFoods control(Food food, Date currentDate) {
+        AbstractStorageOfFoods result = this.reallocateFood(food, currentDate);
         this.lowPrice(food, currentDate);
+        return result;
     }
 
     /**
@@ -54,14 +56,18 @@ public class ControllQuality {
      *
      * @param food
      * @param currentDate
+     * @return storage, where reallocate food
      */
-    private void reallocateFood(Food food, Date currentDate) {
+    private AbstractStorageOfFoods reallocateFood(Food food, Date currentDate) {
+        AbstractStorageOfFoods result = null;
         for (AbstractStorageOfFoods storage : storages) {
             if (storage != null && storage.isAppropriate(food, currentDate)) {
                 storage.add(food);
+                result = storage;
                 break;
             }
         }
+        return result;
     }
 
     /**

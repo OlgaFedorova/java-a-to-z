@@ -5,6 +5,7 @@ import java.util.Date;
 import ofedorova.foods.Chicken;
 import ofedorova.foods.Food;
 import ofedorova.foods.Milk;
+import ofedorova.storages.AbstractStorageOfFoods;
 import ofedorova.storages.Shop;
 import ofedorova.storages.Trash;
 import ofedorova.storages.Warehouse;
@@ -47,8 +48,8 @@ public class ControllQualityTest {
         double price = 50.0;
         double discount = 10.0;
         final Food food = new Milk("milk", createDate, expaireDate, price, discount);
-        controllQuality.control(food, currentDate);
-        assertTrue(!warehouse.getFoods().isEmpty() && food.getPrice() == price);
+        final AbstractStorageOfFoods storage = controllQuality.control(food, currentDate);
+        assertTrue(storage != null && storage.equals(warehouse) && food.getPrice() == price);
     }
 
     @Test
@@ -60,8 +61,8 @@ public class ControllQualityTest {
         double price = 50.0;
         double discount = 10.0;
         final Food food = new Chicken("chicken", createDate, expaireDate, price, discount);
-        controllQuality.control(food, currentDate);
-        assertTrue(!shop.getFoods().isEmpty() && food.getPrice() == price);
+        final AbstractStorageOfFoods storage = controllQuality.control(food, currentDate);
+        assertTrue(storage != null && storage.equals(shop) && food.getPrice() == price);
     }
 
     @Test
@@ -73,8 +74,8 @@ public class ControllQualityTest {
         double price = 50.0;
         double discount = 10.0;
         final Food food = new Chicken("chicken", createDate, expaireDate, price, discount);
-        controllQuality.control(food, currentDate);
-        assertTrue(!shop.getFoods().isEmpty() && food.getPrice() == price - discount);
+        final AbstractStorageOfFoods storage = controllQuality.control(food, currentDate);
+        assertTrue(storage != null && storage.equals(shop) && food.getPrice() == price - discount);
     }
 
     @Test
@@ -86,8 +87,8 @@ public class ControllQualityTest {
         double price = 50.0;
         double discount = 10.0;
         final Food food = new Chicken("chicken", createDate, expaireDate, price, discount);
-        controllQuality.control(food, currentDate);
-        assertTrue(!trash.getFoods().isEmpty() && food.getPrice() == price);
+        final AbstractStorageOfFoods storage = controllQuality.control(food, currentDate);
+        assertTrue(storage != null && storage.equals(trash) && food.getPrice() == price);
     }
 
 }
