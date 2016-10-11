@@ -20,6 +20,20 @@ public class Warehouse extends AbstractStorageOfFoods {
      * End constant for allowable shelf life of product in percent
      */
     private static final int END_ALLOWABLE_SHELF_LIFE_OF_PRODUCT_IN_PERSENT = 25;
+    /**
+     * Size for storage
+     */
+    private int size;
+
+    /**
+     * Allocates a new {@code Warehouse}
+     *
+     * @param size
+     */
+    public Warehouse(int size) {
+        super();
+        this.size = size;
+    }
 
     /**
      * The method checks food on appropriate for adding in storage.
@@ -30,7 +44,8 @@ public class Warehouse extends AbstractStorageOfFoods {
      */
     @Override
     public boolean isAppropriate(Food food, Date currentDate) {
-        return food.getShelfLifeOfProductInPercent(currentDate) >= START_ALLOWABLE_SHELF_LIFE_OF_PRODUCT_IN_PERSENT
+        return this.foods != null && this.foods.size() < this.size
+                && food.getShelfLifeOfProductInPercent(currentDate) >= START_ALLOWABLE_SHELF_LIFE_OF_PRODUCT_IN_PERSENT
                 && food.getShelfLifeOfProductInPercent(currentDate) < END_ALLOWABLE_SHELF_LIFE_OF_PRODUCT_IN_PERSENT;
     }
 }

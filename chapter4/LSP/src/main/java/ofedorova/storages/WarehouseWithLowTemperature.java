@@ -4,13 +4,13 @@ import java.util.Date;
 import ofedorova.foods.Food;
 
 /**
- * The class implements storage of food "Trash".
+ * The class implements storage of food "Warehouse with low temperature".
  *
  * @author Olga Fedorova
- * @since 27.09.2016
+ * @since 11.10.2016
  * @version 1
  */
-public class Trash extends AbstractStorageOfFoods {
+public class WarehouseWithLowTemperature extends AbstractStorageOfFoods {
 
     /**
      * Constant for allowable shelf life of product in percent
@@ -27,7 +27,6 @@ public class Trash extends AbstractStorageOfFoods {
     @Override
     public boolean isAppropriate(Food food, Date currentDate) {
         return food.getShelfLifeOfProductInPercent(currentDate) > ALLOWABLE_SHELF_LIFE_OF_PRODUCT_IN_PERSENT
-                && !food.isCanReproduct();
+                && food.isCanReproduct();
     }
-
 }
