@@ -67,7 +67,6 @@ public abstract class Food {
 
     /**
      * Setter for field "price" by discount
-     * @return 
      */
     public void setPriceByDiccount(){
         this.price = this.price - this.discount;

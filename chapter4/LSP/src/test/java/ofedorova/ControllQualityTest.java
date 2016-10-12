@@ -9,7 +9,9 @@ import ofedorova.foods.Tomato;
 import ofedorova.storages.AbstractStorageOfFoods;
 import ofedorova.storages.Shop;
 import ofedorova.storages.Trash;
+import ofedorova.storages.TrashExtend;
 import ofedorova.storages.Warehouse;
+import ofedorova.storages.WarehouseLimited;
 import ofedorova.storages.WarehouseWithLowTemperature;
 import org.junit.Test;
 import static org.junit.Assert.*;
@@ -27,9 +29,9 @@ public class ControllQualityTest {
     private final ControllQuality controllQuality = new ControllQuality();
     private final Calendar calendar = Calendar.getInstance();
     private final Shop shop = new Shop();
-    private final Trash trash = new Trash();
-    private final Warehouse warehouse = new Warehouse(1);
-    private final Warehouse warehouseSecond = new Warehouse(1);
+    private final Trash trash = new TrashExtend();
+    private final Warehouse warehouse = new WarehouseLimited(1);
+    private final Warehouse warehouseSecond = new WarehouseLimited(1);
     private final WarehouseWithLowTemperature warehouseWithLowTemperature = new WarehouseWithLowTemperature();
     private Date currentDate;
 
