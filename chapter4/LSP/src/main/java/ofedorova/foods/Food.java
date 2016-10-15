@@ -29,10 +29,6 @@ public abstract class Food {
      * Discount of food
      */
     protected double discount;
-    /**
-     * Sign that food can reproduct
-     */
-    protected boolean canReproduct;
 
     /**
      * Allocates a new {@code Food}
@@ -51,21 +47,6 @@ public abstract class Food {
     }
 
     /**
-     * Allocates a new {@code Food}
-     *
-     * @param name
-     * @param createDate
-     * @param expaireDate
-     * @param price
-     * @param discount
-     * @param canReproduct
-     */
-    public Food(String name, Date createDate, Date expaireDate, double price, double discount, boolean canReproduct) {
-        this(name, createDate, expaireDate, price, discount);
-        this.canReproduct = canReproduct;
-    }
-
-    /**
      * Setter for field "price" by discount
      */
     public void setPriceByDiccount(){
@@ -78,15 +59,6 @@ public abstract class Food {
      */
     public double getPrice() {
         return price;
-    }
-
-    /**
-     * Getter for field "canReproduct"
-     *
-     * @return
-     */
-    public boolean isCanReproduct() {
-        return this.canReproduct;
     }
 
     /**

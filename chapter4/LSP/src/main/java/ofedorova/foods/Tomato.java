@@ -9,10 +9,10 @@ import java.util.Date;
  * @since 11.10.2016
  * @version 1
  */
-public class Tomato extends Food {
+public class Tomato extends FoodReproduct {
 
     /**
-     * * Allocates a new {@code Tomato}
+     * Allocates a new {@code Tomato}
      *
      * @param name
      * @param createDate

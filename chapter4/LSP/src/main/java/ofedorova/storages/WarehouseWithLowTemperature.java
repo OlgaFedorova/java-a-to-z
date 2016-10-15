@@ -2,6 +2,7 @@ package ofedorova.storages;
 
 import java.util.Date;
 import ofedorova.foods.Food;
+import ofedorova.foods.FoodReproduct;
 
 /**
  * The class implements storage of food "Warehouse with low temperature".
@@ -27,6 +28,7 @@ public class WarehouseWithLowTemperature extends AbstractStorageOfFoods {
     @Override
     public boolean isAppropriate(Food food, Date currentDate) {
         return food.getShelfLifeOfProductInPercent(currentDate) > ALLOWABLE_SHELF_LIFE_OF_PRODUCT_IN_PERSENT
-                && food.isCanReproduct();
+                && (food instanceof FoodReproduct ? ((FoodReproduct) food).isCanReproduct() : false);
     }
+
 }

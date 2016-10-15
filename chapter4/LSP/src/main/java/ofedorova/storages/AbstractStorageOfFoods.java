@@ -5,6 +5,7 @@ import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 import ofedorova.foods.Food;
+import ofedorova.foods.FoodReproduct;
 
 /**
  * The class implements abstract storage of food.
@@ -39,4 +40,5 @@ public abstract class AbstractStorageOfFoods {
      * @return true - if food is appropriate false - else
      */
     public abstract boolean isAppropriate(Food food, Date currentDate);
+
 }

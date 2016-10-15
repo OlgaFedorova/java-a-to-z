@@ -2,6 +2,7 @@ package ofedorova.storages;
 
 import java.util.Date;
 import ofedorova.foods.Food;
+import ofedorova.foods.FoodReproduct;
 
 /**
  * The class implements storage of food "Trash".
@@ -11,6 +12,7 @@ import ofedorova.foods.Food;
  * @version 1
  */
 public class TrashExtend extends Trash {
+    
 
     /**
      * The method checks food on appropriate for adding in storage.
@@ -22,7 +24,7 @@ public class TrashExtend extends Trash {
     @Override
     public boolean isAppropriate(Food food, Date currentDate) {
         return super.isAppropriate(food, currentDate)
-                && !food.isCanReproduct();
+                && (food instanceof FoodReproduct ? !((FoodReproduct) food).isCanReproduct() : true);
     }
 
 }

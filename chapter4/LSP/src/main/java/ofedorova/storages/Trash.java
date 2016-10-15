@@ -2,6 +2,7 @@ package ofedorova.storages;
 
 import java.util.Date;
 import ofedorova.foods.Food;
+import ofedorova.foods.FoodReproduct;
 
 /**
  * The class implements storage of food "Trash".
@@ -26,8 +27,6 @@ public class Trash extends AbstractStorageOfFoods {
      */
     @Override
     public boolean isAppropriate(Food food, Date currentDate) {
-        return food.getShelfLifeOfProductInPercent(currentDate) > ALLOWABLE_SHELF_LIFE_OF_PRODUCT_IN_PERSENT
-                && !food.isCanReproduct();
+        return food.getShelfLifeOfProductInPercent(currentDate) > ALLOWABLE_SHELF_LIFE_OF_PRODUCT_IN_PERSENT;
     }
-
 }
