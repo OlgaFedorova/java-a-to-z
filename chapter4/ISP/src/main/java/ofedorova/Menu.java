@@ -1,12 +1,12 @@
 package ofedorova;
 
 import ofedorova.prototypes.Printable;
-import ofedorova.prototypes.Addatable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 import ofedorova.prototypes.Input;
 import ofedorova.prototypes.Selectable;
+import ofedorova.prototypes.Addable;
 
 /**
  * The class implements to work with menu.
@@ -15,7 +15,7 @@ import ofedorova.prototypes.Selectable;
  * @since 16.10.2016
  * @version 1
  */
-public class Menu implements Printable, Addatable, Selectable, Input {
+public class Menu implements Printable, Addable, Selectable, Input {
 
     /**
      * List of items.
