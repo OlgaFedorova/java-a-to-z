@@ -36,7 +36,7 @@ public class VerifierForUserOfDB implements VerifierForUser {
     public boolean checkName(String name) {
         boolean isRight = false;
         if (name != null) {
-            isRight = name.matches("(\\w\\d){1,30}");
+            isRight = name.matches("^([a-zA-Z]\\d*?){1,30}$");
         }
         return isRight;
     }

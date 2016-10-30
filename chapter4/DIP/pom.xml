@@ -27,7 +27,7 @@
 		<configuration>
                     <archive>
 			<manifest>
-                              <mainClass>ofedorova.DemonstrationMenu</mainClass>
+                              <mainClass>ofedorova.Start</mainClass>
 			</manifest>
                     </archive>
 		</configuration>

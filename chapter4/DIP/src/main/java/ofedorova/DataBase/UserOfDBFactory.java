@@ -33,9 +33,11 @@ public class UserOfDBFactory extends UserFactory {
     @Override
     public User getNewUser(String name, String age) {
         String id = this.generateId();
-        User user = null;
-        if (id != null) {
-            return new UserOfDB(id, name, age);
+        User user;
+        if (id != null && !id.isEmpty()) {
+            user = new UserOfDB(id, name, age);
+        } else {
+            user = new NullUserOfDB();
         }
         return user;
     }
@@ -48,7 +50,7 @@ public class UserOfDBFactory extends UserFactory {
     @Override
     public void removeUser(User user) {
         int numberOfId = 0;
-        if (user.getId() != null) {
+        if (user.getId() != null && !user.getId().isEmpty()) {
             if (user.getId().matches("100000[1-9]")) {
                 numberOfId = Integer.valueOf(user.getId().substring(6));
             } else if (user.getId().matches("10000[1-9]\\d")) {
@@ -63,7 +65,7 @@ public class UserOfDBFactory extends UserFactory {
                 numberOfId = Integer.valueOf(user.getId().substring(1));
             }
         }
-        if (this.count == numberOfId) {
+        if (this.count == numberOfId + 1) {
             this.count--;
         }
     }
@@ -75,7 +77,7 @@ public class UserOfDBFactory extends UserFactory {
      */
     @Override
     public VerifierForUser getVerifierForUser() {
-        VerifierForUser result = null;
+        VerifierForUser result;
         if (this.verifier != null) {
             result = this.verifier;
         } else {
@@ -90,7 +92,7 @@ public class UserOfDBFactory extends UserFactory {
      * @return new identifier
      */
     private String generateId() {
-        String result = null;
+        String result;
         String valueForId = String.valueOf(this.count++);
         switch (valueForId.length()) {
             case 1:
@@ -112,7 +114,7 @@ public class UserOfDBFactory extends UserFactory {
                 result = String.format("1%s", valueForId);
                 break;
             default:
-                result = null;
+                result = new String();
         }
         return result;
     }

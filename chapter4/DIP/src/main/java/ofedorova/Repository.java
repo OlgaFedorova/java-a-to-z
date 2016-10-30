@@ -1,7 +1,9 @@
 package ofedorova;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
+import ofedorova.DataBase.NullUserOfDB;
 import ofedorova.prototype.User;
 import ofedorova.prototype.UserFactory;
 
@@ -44,7 +46,7 @@ public class Repository {
         boolean isCreate = false;
         if (this.isNameUnique(name)) {
             User user = this.userFactory.getNewUser(name, age);
-            if (user != null) {
+            if (!user.isNull()) {
                 this.users.add(user);
                 isCreate = true;
             }
@@ -63,8 +65,8 @@ public class Repository {
     public boolean edit(String id, String name, String age) {
         boolean isEdit = false;
         User user = this.findById(id);
-        if (user != null) {
-            if (user.getName() != null && (user.getName().equals(name) || this.isNameUnique(name))) {
+        if (!user.isNull()) {
+            if (user.getName() != null && !user.getName().isEmpty() && (user.getName().equals(name) || this.isNameUnique(name))) {
                 user.edit(name, age);
                 isEdit = true;
             }
@@ -80,7 +82,19 @@ public class Repository {
      */
     public boolean remove(String id) {
         User user = this.findById(id);
+        if(!user.isNull()){
+            this.userFactory.removeUser(user);
+        }
         return this.users.remove(user);
+    }
+    
+    /**
+     * Getter for field "users"
+     *
+     * @return list of users
+     */
+    public List<User> getUsers() {
+        return Collections.unmodifiableList(this.users);
     }
 
     /**
@@ -90,9 +104,9 @@ public class Repository {
      * @return true - if user is finding, false - if user isn't finding.
      */
     private User findById(String id) {
-        User result = null;
+        User result = new NullUserOfDB();
         for (User user : this.users) {
-            if (user != null && id != null && id.equals(user.getId())) {
+            if (user.getId().equals(id)) {
                 result = user;
                 break;
             }
@@ -109,7 +123,7 @@ public class Repository {
     private boolean isNameUnique(String name) {
         boolean isUnique = true;
         for (User user : this.users) {
-            if (user != null && name != null && name.equals(user.getName())) {
+            if (user.getName().equals(name)) {
                 isUnique = false;
                 break;
             }

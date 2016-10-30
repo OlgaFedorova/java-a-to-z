@@ -34,4 +34,13 @@ public class UserOfDB extends User {
         this.name = name;
     }
 
+    /**
+     * The method checks null-object.
+     *
+     * @return true - if this object is null, false - if this object isn't null
+     */
+    @Override
+    public boolean isNull() {
+        return false;
+    }
 }
