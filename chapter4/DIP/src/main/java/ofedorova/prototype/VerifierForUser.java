@@ -15,7 +15,7 @@ public interface VerifierForUser {
      * @param id new value of field "id"
      * @return true - if value is correct, false - if value isn't correct.
      */
-    public boolean checkId(String id);
+    boolean checkId(String id);
 
     /**
      * The method checks new value of field "name".
@@ -23,7 +23,7 @@ public interface VerifierForUser {
      * @param name new value of field "name"
      * @return true - if value is correct, false - if value isn't correct.
      */
-    public boolean checkName(String name);
+    boolean checkName(String name);
 
     /**
      * The method checks new value of field "age".
@@ -31,6 +31,6 @@ public interface VerifierForUser {
      * @param age new value of field "age"
      * @return true - if value is correct, false - if value isn't correct.
      */
-    public boolean checkAge(String age);
+    boolean checkAge(String age);
 
 }

@@ -14,5 +14,5 @@ public interface Input {
      *
      * @return input data
      */
-    public String ask(String message);
+    String ask(String message);
 }
