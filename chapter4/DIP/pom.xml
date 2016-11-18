@@ -20,18 +20,18 @@
 
     <build>
 	<plugins>
-            <plugin>
+        <plugin>
 		<groupId>org.apache.maven.plugins</groupId>
 		<artifactId>maven-jar-plugin</artifactId>
-                <version>3.0.1</version>
+        <version>3.0.1</version>
 		<configuration>
-                    <archive>
+        <archive>
 			<manifest>
-                              <mainClass>ofedorova.Start</mainClass>
+            <mainClass>ofedorova.Start</mainClass>
 			</manifest>
-                    </archive>
+        </archive>
 		</configuration>
-            </plugin>
+        </plugin>
 	    <plugin>
 	        <groupId>org.apache.maven.plugins</groupId>
 	        <artifactId>maven-compiler-plugin</artifactId>
