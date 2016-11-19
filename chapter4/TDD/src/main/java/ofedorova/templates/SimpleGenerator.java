@@ -1,6 +1,8 @@
 package ofedorova.templates;
 
+import java.util.HashSet;
 import java.util.Map;
+import java.util.Set;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -11,6 +13,11 @@ import java.util.regex.Pattern;
  */
 public class SimpleGenerator implements Template {
     /**
+     * Pattern for find substring in the text.
+     */
+    private static final Pattern PATTERN = Pattern.compile("\\$\\{(\\w+?)\\}");
+
+    /**
      * The method generates a new string, replacing the substring of type "${parametr}" to the values from array.
      *
      * @param template string for replacing
@@ -19,9 +26,8 @@ public class SimpleGenerator implements Template {
      */
     @Override
     public String generate(String template, Object[] data) {
-        final String regx = "\\$\\{\\w+?\\}";
         String result = template;
-        Matcher matcher = Pattern.compile(regx).matcher(result);
+        Matcher matcher = PATTERN.matcher(result);
         int index = 0;
 
         while (matcher.find()) {
@@ -38,16 +44,26 @@ public class SimpleGenerator implements Template {
      *
      * @param template string for replacing
      * @param data     structure with keys and values
+     * @throws KeyException when key is not found or the key is extra
      * @return new string
      */
     @Override
-    public String generate(String template, Map<String, String> data) {
+    public String generate(String template, Map<String, String> data) throws KeyException {
         String result = template;
-        if (data != null) {
-            for (Map.Entry<String, String> record : data.entrySet()) {
-                Matcher matcher = Pattern.compile(String.format("\\$\\{%s\\}", record.getKey())).matcher(result);
-                result = matcher.replaceAll(record.getValue());
+        Matcher matcher = PATTERN.matcher(result);
+        Set<String> keyFound = new HashSet<>();
+        while (matcher.find()){
+            if(data != null && data.containsKey(matcher.group(1))){
+                result = matcher.replaceFirst(data.get(matcher.group(1)));
+                keyFound.add(matcher.group(1));
+                matcher.reset(result);
             }
+            else{
+                throw new KeyException(String.format("Not found key - %s", matcher.group(1)));
+            }
+        }
+        if(!keyFound.equals(data.keySet())){
+            throw new KeyException("There are extra keys in tha data.");
         }
         return result;
     }

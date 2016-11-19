@@ -1,7 +1,9 @@
 package ofedorova.templates;
 
 import org.junit.Assert;
+import org.junit.Rule;
 import org.junit.Test;
+import org.junit.rules.ExpectedException;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -101,7 +103,32 @@ public class TemplateTest {
         data.put("name", "Olga");
         data.put("subject", "you");
         final String checked = "I am Olga, Who are you?";
-        final String result = template.generate(text, data);
+        String result = null;
+        try {
+            result = template.generate(text, data);
+        } catch (KeyException e) {
+            e.printStackTrace();
+        }
+
+        Assert.assertThat(result, is(checked));
+    }
+
+    /**
+     * The method of testing when take text with a single repeat key and returns a text with the replacing key from data.
+     */
+    @Test
+    public void whenTakeTextWithByOneRepeatKeyShouldReplaceParamsToData() {
+        final Template template = new SimpleGenerator();
+        final String text = " Help, ${sos}, ${sos}, ${sos}";
+        final Map<String, String> data = new HashMap<>();
+        data.put("sos", "Aaa");
+        final String checked = " Help, Aaa, Aaa, Aaa";
+        String result = null;
+        try {
+            result = template.generate(text, data);
+        } catch (KeyException e) {
+            e.printStackTrace();
+        }
 
         Assert.assertThat(result, is(checked));
     }
@@ -117,31 +144,37 @@ public class TemplateTest {
         data.put("name", "Olga");
         data.put("subject", "you");
         final String checked = "I am Olga, Who are you? I am Olga, Who are you?";
-        final String result = template.generate(text, data);
+        String result = null;
+        try {
+            result = template.generate(text, data);
+        } catch (KeyException e) {
+            e.printStackTrace();
+        }
 
         Assert.assertThat(result, is(checked));
     }
 
+    @Rule
+    public final ExpectedException exception = ExpectedException.none();
+
     /**
-     * The method of testing when take text with some keys, data is null and returns source text.
+     * The method of testing when take text with some keys, data is null and returns exception.
      */
     @Test
-    public void whenTakeTextWithByKeyNullShouldReplaceParamsToData() {
+    public void whenTakeTextWithByKeyNullShouldReplaceParamsToData() throws KeyException {
         final Template template = new SimpleGenerator();
         final String text = "I am ${name}, Who are ${subject}?";
         final Map<String, String> data = null;
-        final String checked = "I am ${name}, Who are ${subject}?";
-        final String result = template.generate(text, data);
-
-        Assert.assertThat(result, is(checked));
+        exception.expect(KeyException.class);
+        String result = template.generate(text, data);
     }
 
     /**
      * The method of testing when take text with some keys, values in data is extra
-     * and returns a text with the replacing keys from part of data.
+     * and returns exception.
      */
     @Test
-    public void whenTakeTextWithByExtraKeyShouldReplaceParamsToData() {
+    public void whenTakeTextWithByExtraKeyShouldReplaceParamsToData() throws KeyException {
         final Template template = new SimpleGenerator();
         final String text = "I am ${name}, Who are ${subject}?";
         final Map<String, String> data = new HashMap<>();
@@ -149,26 +182,22 @@ public class TemplateTest {
         data.put("subject", "you");
         data.put("name2", "Olga");
         data.put("subject2", "you");
-        final String checked = "I am Olga, Who are you?";
-        final String result = template.generate(text, data);
-
-        Assert.assertThat(result, is(checked));
+        exception.expect(KeyException.class);
+        String result = template.generate(text, data);
     }
 
     /**
      * The method of testing when take text with some keys, values in data is less then count of keys in the text.
-     * Returns a text with the replacing part of keys from data.
+     * Returns exception.
      */
     @Test
-    public void whenTakeTextWithByFewKeyShouldReplaceParamsToData() {
+    public void whenTakeTextWithByFewKeyShouldReplaceParamsToData() throws KeyException {
         final Template template = new SimpleGenerator();
         final String text = "I am ${name}, Who are ${subject}?";
         final Map<String, String> data = new HashMap<>();
         data.put("name", "Olga");
-        final String checked = "I am Olga, Who are ${subject}?";
-        final String result = template.generate(text, data);
-
-        Assert.assertThat(result, is(checked));
+        exception.expect(KeyException.class);
+        String result = template.generate(text, data);
     }
 
 }

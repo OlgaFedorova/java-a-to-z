@@ -24,7 +24,8 @@ public interface Template {
      * @param template string for replacing
      * @param data     structure with keys and values
      * @return new string
+     * @throws KeyException when key is not found or the key is extra
      */
-    String generate(String template, Map<String, String> data);
+    String generate(String template, Map<String, String> data) throws KeyException;
 
 }
