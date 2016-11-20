@@ -44,25 +44,24 @@ public class SimpleGenerator implements Template {
      *
      * @param template string for replacing
      * @param data     structure with keys and values
-     * @throws KeyException when key is not found or the key is extra
      * @return new string
+     * @throws KeyException when key is not found or the key is extra
      */
     @Override
     public String generate(String template, Map<String, String> data) throws KeyException {
         String result = template;
         Matcher matcher = PATTERN.matcher(result);
         Set<String> keyFound = new HashSet<>();
-        while (matcher.find()){
-            if(data != null && data.containsKey(matcher.group(1))){
+        while (matcher.find()) {
+            if (data != null && data.containsKey(matcher.group(1))) {
                 result = matcher.replaceFirst(data.get(matcher.group(1)));
                 keyFound.add(matcher.group(1));
                 matcher.reset(result);
-            }
-            else{
+            } else {
                 throw new KeyException(String.format("Not found key - %s", matcher.group(1)));
             }
         }
-        if(!keyFound.equals(data.keySet())){
+        if (!keyFound.equals(data.keySet())) {
             throw new KeyException("There are extra keys in tha data.");
         }
         return result;

@@ -154,11 +154,15 @@ public class TemplateTest {
         Assert.assertThat(result, is(checked));
     }
 
+    /**
+     * Expected exception.
+     */
     @Rule
     public final ExpectedException exception = ExpectedException.none();
 
     /**
      * The method of testing when take text with some keys, data is null and returns exception.
+     * @throws KeyException when key is not found or the key is extra
      */
     @Test
     public void whenTakeTextWithByKeyNullShouldReplaceParamsToData() throws KeyException {
@@ -172,6 +176,7 @@ public class TemplateTest {
     /**
      * The method of testing when take text with some keys, values in data is extra
      * and returns exception.
+     * @throws KeyException when key is not found or the key is extra
      */
     @Test
     public void whenTakeTextWithByExtraKeyShouldReplaceParamsToData() throws KeyException {
@@ -189,6 +194,7 @@ public class TemplateTest {
     /**
      * The method of testing when take text with some keys, values in data is less then count of keys in the text.
      * Returns exception.
+     * @throws KeyException when key is not found or the key is extra
      */
     @Test
     public void whenTakeTextWithByFewKeyShouldReplaceParamsToData() throws KeyException {
