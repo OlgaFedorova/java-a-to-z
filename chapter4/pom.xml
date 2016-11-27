@@ -20,6 +20,6 @@
 		<module>ISP</module>
 		<module>DIP</module>
         <module>TDD</module>
-        <module>total</module>
+        <module>TicTacToeGame</module>
     </modules>
 </project>

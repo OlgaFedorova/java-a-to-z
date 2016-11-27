@@ -20,7 +20,7 @@ import ofedorova.prototype.VerifierForUser;
 public class Menu implements Input {
 
     /**
-     * Repository of users.
+     * Repository of gamers.
      */
     private final Repository repository;
     /**
@@ -58,7 +58,7 @@ public class Menu implements Input {
         this.actions.add(new AddNewUser(1, "Add new user"));
         this.actions.add(new EditUser(2, "Edit user"));
         this.actions.add(new RemoveUser(3, "Remove user"));
-        this.actions.add(new ShowUsers(4, "Show list of users"));
+        this.actions.add(new ShowUsers(4, "Show list of gamers"));
         this.actions.add(new ExitAction(5, "Exit"));
 
     }
@@ -322,7 +322,7 @@ public class Menu implements Input {
     }
 
     /**
-     * The class implements command "Show list of users".
+     * The class implements command "Show list of gamers".
      *
      * @author Olga Fedorova
      * @since 29.10.2016

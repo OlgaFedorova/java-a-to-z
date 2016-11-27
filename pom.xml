@@ -9,17 +9,29 @@
     <version>2.0</version>
     <packaging>pom</packaging>
 
+    <modules>
+        <module>chapter1</module>
+        <module>chapter2</module>
+        <module>chapter4</module>
+    </modules>
+
+    <properties>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
+        <project.build.sourceencoding>UTF-8</project.build.sourceencoding>
+    </properties>
+
     <dependencies>
-        <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>slf4j-log4j12</artifactId>
-            <version>1.7.21</version>
-        </dependency>
-        <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>slf4j-api</artifactId>
-            <version>1.7.21</version>
-        </dependency>
+        <!--<dependency>-->
+        <!--<groupId>org.slf4j</groupId>-->
+        <!--<artifactId>slf4j-log4j12</artifactId>-->
+        <!--<version>1.7.21</version>-->
+        <!--</dependency>-->
+        <!--<dependency>-->
+        <!--<groupId>org.slf4j</groupId>-->
+        <!--<artifactId>slf4j-api</artifactId>-->
+        <!--<version>1.7.21</version>-->
+        <!--</dependency>-->
         <dependency>
             <groupId>org.hamcrest</groupId>
             <artifactId>hamcrest-all</artifactId>
@@ -98,6 +110,15 @@
                 <configuration>
                     <printFailingErrors>true</printFailingErrors>
                 </configuration>
+                <executions>
+                    <execution>
+                        <id>verify</id>
+                        <phase>verify</phase>
+                        <goals>
+                            <goal>check</goal>
+                        </goals>
+                    </execution>
+                </executions>
             </plugin>
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
@@ -106,6 +127,15 @@
                 <configuration>
                     <xmlOutput>true</xmlOutput>
                 </configuration>
+                <executions>
+                    <execution>
+                        <id>verify</id>
+                        <phase>verify</phase>
+                        <goals>
+                            <goal>check</goal>
+                        </goals>
+                    </execution>
+                </executions>
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -114,6 +144,15 @@
                 <configuration>
                     <failOnWarning>true</failOnWarning>
                 </configuration>
+                <executions>
+                    <execution>
+                        <id>verify</id>
+                        <phase>verify</phase>
+                        <goals>
+                            <goal>analyze</goal>
+                        </goals>
+                    </execution>
+                </executions>
             </plugin>
             <plugin>
                 <!-- https://mvnrepository.com/artifact/org.basepom.maven/duplicate-finder-maven-plugin -->
@@ -154,16 +193,4 @@
             </plugin>
         </plugins>
     </build>
-
-    <modules>
-            <module>chapter1</module>
-            <module>chapter2</module>
-			<module>chapter4</module>
-	</modules>
-
-    <properties>
-        <maven.compiler.source>1.8</maven.compiler.source>
-        <maven.compiler.target>1.8</maven.compiler.target>
-        <project.build.sourceencoding>UTF-8</project.build.sourceencoding>
-    </properties>
 </project>

@@ -8,7 +8,7 @@ import ofedorova.prototype.User;
 import ofedorova.prototype.UserFactory;
 
 /**
- * The class implements a repository for users.
+ * The class implements a repository for gamers.
  *
  * @author Olga Fedorova
  * @since 23.10.2016
@@ -17,7 +17,7 @@ import ofedorova.prototype.UserFactory;
 public class Repository {
 
     /**
-     * List of users.
+     * List of gamers.
      */
     private final List<User> users = new ArrayList<>();
     /**
@@ -89,9 +89,9 @@ public class Repository {
     }
     
     /**
-     * Getter for field "users"
+     * Getter for field "gamers"
      *
-     * @return list of users
+     * @return list of gamers
      */
     public List<User> getUsers() {
         return Collections.unmodifiableList(this.users);

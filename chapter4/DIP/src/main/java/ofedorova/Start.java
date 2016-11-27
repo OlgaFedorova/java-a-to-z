@@ -12,7 +12,7 @@ import ofedorova.DataBase.UserOfDBFactory;
 public class Start {
 
     /**
-     * Menu for management of storage users.
+     * Menu for management of storage gamers.
      */
     private final Menu menu;
 
