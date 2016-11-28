@@ -125,7 +125,7 @@ public abstract class AlgoritmsGame {
      */
     private int checkSymbol(DirectionOfMovementOnGameArea directionOfMovement, int x, int y, Symbol symbol, Symbol[][] areaGame) {
         int countRow = 0;
-        if ((y >= 0 && y < areaGame.length) && (x >= 0 && x < areaGame[y].length) && areaGame[y][x].equals(symbol)) {
+        if (y >= 0 && y < areaGame.length && x >= 0 && x < areaGame[y].length && areaGame[y][x].equals(symbol)) {
             countRow++;
             final Map<String, Integer> nextCoordinates = this.getNextCoordinates(directionOfMovement, x, y);
             countRow = countRow + this.checkSymbol(directionOfMovement, nextCoordinates.get("X"), nextCoordinates.get("Y"), symbol, areaGame);

@@ -14,13 +14,13 @@ import java.io.PrintStream;
 import static org.junit.Assert.assertEquals;
 
 /**
- * Class for testing class "TicTacToeStart".
+ * Class for testing class "TicTacToe".
  *
  * @author Olga Fedorova
  * @version 1.0
- * @since 26.11.2016
+ * @since 28.11.2016
  */
-public class TicTacToeStartTest {
+public class TicTacToeTest {
     /**
      * Default values of System.in.
      */
@@ -70,12 +70,13 @@ public class TicTacToeStartTest {
     }
 
     /**
-     * Test main method.
-     * @throws IOException                            exception will be when work with stream.
+     * Method for testing start game.
+     *
+     * @throws IOException exception will be when work with stream.
      */
     @Test
-    public void whenTestMain() throws IOException {
-        TicTacToeStart.main(new String[]{});
+    public void whenStartGame() throws IOException {
+        new TicTacToe(new ConsoleUserInterface()).startGame();
         final BasicTestTicTacToe basicTestTicTacToe = new BasicTestTicTacToe();
         final String expected = basicTestTicTacToe.getOuputConsoleString();
         final String actual = basicTestTicTacToe.getStingInFileOutputConsoleUserInterface();

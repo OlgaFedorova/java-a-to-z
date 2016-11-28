@@ -110,7 +110,7 @@ public class ConsoleUserInterfaceTest {
      *
      * @throws GameAreaCoordinateOutOfBoundsException when coordinate is out of bounds game area.
      * @throws GameAreaCellNotEmptyException          when cell of game area is not empty.
-     * @throws IOException                            exception will be when worl with stream.
+     * @throws IOException                            exception will be when work with stream.
      */
     @Test
     public void showAreaGame() throws GameAreaCoordinateOutOfBoundsException, GameAreaCellNotEmptyException, IOException {

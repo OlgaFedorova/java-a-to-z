@@ -6,6 +6,7 @@ import ofedorova.areas.Symbol;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.nio.charset.StandardCharsets;
 
 /**
  * Class implements console interface.
@@ -18,7 +19,7 @@ public class ConsoleUserInterface implements UserInterface {
     /**
      * Object for work with console.
      */
-    private final BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+    private final BufferedReader reader = new BufferedReader(new InputStreamReader(System.in, StandardCharsets.UTF_8));
 
     /**
      * Method print info in interface.
