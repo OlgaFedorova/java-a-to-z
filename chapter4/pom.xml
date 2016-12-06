@@ -22,5 +22,6 @@
         <module>TDD</module>
         <module>TicTacToeGame</module>
         <module>TicTacToeCheckWinner</module>
+        <module>TicTacToeCheckWinnerVersion2</module>
     </modules>
 </project>

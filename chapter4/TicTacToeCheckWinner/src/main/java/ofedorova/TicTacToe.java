@@ -109,10 +109,10 @@ public class TicTacToe {
         for (int index = 0; index < this.field.length; index++) {
             final int countARowOnDiagonalDownLeft = this.checkSymbol(DirectionOfMovementOnGameArea.DIAGONAL_DOWN_LEFT, index, 0, 1);
             final int countARowOnDiagonalDownRight = this.checkSymbol(DirectionOfMovementOnGameArea.DIAGONAL_DOWN_RIGHT, index, 0, 1);
-            final int countARowOnDiagonalUpLeft = this.checkSymbol(DirectionOfMovementOnGameArea.DIAGONAL_UP_LEFT, index, this.field.length - 1, 1);
-            final int countARowOnDiagonalUpRight = this.checkSymbol(DirectionOfMovementOnGameArea.DIAGONAL_UP_RIGHT, index, this.field.length - 1, 1);
             final int countARowOnVerticalDown = this.checkSymbol(DirectionOfMovementOnGameArea.VERTICAL_DOWN, index, 0, 1);
             final int countARowOnHorizontalRight = this.checkSymbol(DirectionOfMovementOnGameArea.HORIZONTAL_RIGHT, 0, index, 1);
+            final int countARowOnDiagonalUpLeft = this.checkSymbol(DirectionOfMovementOnGameArea.DIAGONAL_UP_LEFT, index, this.field.length - 1, 1);
+            final int countARowOnDiagonalUpRight = this.checkSymbol(DirectionOfMovementOnGameArea.DIAGONAL_UP_RIGHT, index, this.field.length - 1, 1);
             hasWinner = countARowOnDiagonalDownLeft == this.countForWinner || countARowOnDiagonalDownRight == this.countForWinner
                     || countARowOnVerticalDown == this.countForWinner || countARowOnDiagonalUpLeft == this.countForWinner
                     || countARowOnDiagonalUpRight == this.countForWinner || countARowOnHorizontalRight == this.countForWinner;
