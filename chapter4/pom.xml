@@ -21,5 +21,6 @@
 		<module>DIP</module>
         <module>TDD</module>
         <module>TicTacToeGame</module>
+        <module>TicTacToeCheckWinner</module>
     </modules>
 </project>

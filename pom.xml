@@ -83,6 +83,9 @@
                         <packageLineRate>60</packageLineRate>
                         <packageBranchRate>60</packageBranchRate>
                     </check>
+                    <formats>
+                        <format>html</format>
+                    </formats>
                 </configuration>
                 <executions>
                     <execution>
@@ -91,6 +94,7 @@
                         <goals>
                             <goal>clean</goal>
                             <goal>check</goal>
+                            <goal>cobertura</goal>
                         </goals>
                     </execution>
                 </executions>
