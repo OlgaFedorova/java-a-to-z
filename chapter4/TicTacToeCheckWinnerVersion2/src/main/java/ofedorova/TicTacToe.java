@@ -1,5 +1,7 @@
 package ofedorova;
 
+import java.util.Arrays;
+
 /**
  * Class implement business logic of game "TicTacToe".
  *
@@ -24,11 +26,8 @@ public class TicTacToe {
      * @param countForWinner value of field "countForWinner".
      */
     public TicTacToe(int[][] field, int countForWinner) {
-        int[][] dest = new int[field.length][];
-        for (int index = 0; index < field.length; index++) {
-            dest[index] = field[index];
-        }
-        this.field = dest;
+        final int[][] src = Arrays.copyOf(field, field.length);
+        this.field = src;
         this.countForWinner = countForWinner;
     }
 
