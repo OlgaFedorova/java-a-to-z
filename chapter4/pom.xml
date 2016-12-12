@@ -23,5 +23,6 @@
         <module>TicTacToeGame</module>
         <module>TicTacToeCheckWinner</module>
         <module>TicTacToeCheckWinnerVersion2</module>
+        <module>GreedyAlgorithm</module>
     </modules>
 </project>
