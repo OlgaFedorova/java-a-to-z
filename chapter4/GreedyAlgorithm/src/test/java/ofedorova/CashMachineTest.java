@@ -317,5 +317,24 @@ public class CashMachineTest {
         final Map<Integer, Integer> actualChangeCoins = this.cashMachine.getChangeCoins(amount);
     }
 
+    /**
+     * Test when getting one coin with nominal 10.
+     *
+     * @throws NotEnoughMoneyException when not enough money in cash machine.
+     */
+    @Test
+    public void whenGetChangeCoinsScript11() throws NotEnoughMoneyException {
+        this.addCoinsInBancomat();
+
+        final Map<Integer, Integer> expectChangeCoins = new HashMap<>();
+        final int count = 1;
+        expectChangeCoins.put(NOMINAL10, count);
+
+        final int amount = NOMINAL10;
+        final Map<Integer, Integer> actualChangeCoins = this.cashMachine.getChangeCoins(amount);
+
+        Assert.assertThat(actualChangeCoins, is(expectChangeCoins));
+    }
+
 
 }
