@@ -5,7 +5,9 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import static org.hamcrest.core.Is.is;
@@ -114,12 +116,78 @@ public class CashMachineTest {
     public void whenGetChangeCoinsScript1() throws NotEnoughMoneyException {
         this.addCoinsInBancomat();
 
-        final Map<Integer, Integer> expectChangeCoins = new HashMap<>();
-        final int countChange10 = 4;
-        expectChangeCoins.put(NOMINAL10, countChange10);
+        final List<Integer> list1 = new ArrayList<>();
+        list1.add(NOMINAL10);
+        list1.add(NOMINAL10);
+        list1.add(NOMINAL10);
+        list1.add(NOMINAL10);
+
+        final List<Integer> list2 = new ArrayList<>();
+        list2.add(NOMINAL10);
+        list2.add(NOMINAL10);
+        list2.add(NOMINAL10);
+        list2.add(NOMINAL5);
+        list2.add(NOMINAL5);
+
+        final List<Integer> list3 = new ArrayList<>();
+        list3.add(NOMINAL10);
+        list3.add(NOMINAL10);
+        list3.add(NOMINAL5);
+        list3.add(NOMINAL5);
+        list3.add(NOMINAL5);
+        list3.add(NOMINAL5);
+
+        final List<Integer> list4 = new ArrayList<>();
+        list4.add(NOMINAL10);
+        list4.add(NOMINAL5);
+        list4.add(NOMINAL5);
+        list4.add(NOMINAL5);
+        list4.add(NOMINAL5);
+        list4.add(NOMINAL5);
+        list4.add(NOMINAL5);
+
+        final List<Integer> list5 = new ArrayList<>();
+        list5.add(NOMINAL5);
+        list5.add(NOMINAL5);
+        list5.add(NOMINAL5);
+        list5.add(NOMINAL5);
+        list5.add(NOMINAL5);
+        list5.add(NOMINAL5);
+        list5.add(NOMINAL5);
+        list5.add(NOMINAL1);
+        list5.add(NOMINAL1);
+        list5.add(NOMINAL1);
+        list5.add(NOMINAL1);
+        list5.add(NOMINAL1);
+
+        final List<Integer> list6 = new ArrayList<>();
+        list6.add(NOMINAL5);
+        list6.add(NOMINAL5);
+        list6.add(NOMINAL5);
+        list6.add(NOMINAL5);
+        list6.add(NOMINAL5);
+        list6.add(NOMINAL5);
+        list6.add(NOMINAL1);
+        list6.add(NOMINAL1);
+        list6.add(NOMINAL1);
+        list6.add(NOMINAL1);
+        list6.add(NOMINAL1);
+        list6.add(NOMINAL1);
+        list6.add(NOMINAL1);
+        list6.add(NOMINAL1);
+        list6.add(NOMINAL1);
+        list6.add(NOMINAL1);
+
+        final List<List<Integer>> expectChangeCoins = new ArrayList<>();
+        expectChangeCoins.add(list1);
+        expectChangeCoins.add(list2);
+        expectChangeCoins.add(list3);
+        expectChangeCoins.add(list4);
+        expectChangeCoins.add(list5);
+        expectChangeCoins.add(list6);
 
         final int amount = 40;
-        final Map<Integer, Integer> actualChangeCoins = this.cashMachine.getChangeCoins(amount);
+        final List<List<Integer>> actualChangeCoins = this.cashMachine.getChangeCoins(amount);
 
         Assert.assertThat(actualChangeCoins, is(expectChangeCoins));
     }
@@ -133,11 +201,65 @@ public class CashMachineTest {
     public void whenGetChangeCoinsScript2() throws NotEnoughMoneyException {
         this.addCoinsInBancomat();
 
-        final Map<Integer, Integer> expectChangeCoins = new HashMap<>();
-        expectChangeCoins.put(NOMINAL10, COUNT10);
+        final List<Integer> list1 = new ArrayList<>();
+        list1.add(NOMINAL10);
+        list1.add(NOMINAL10);
+        list1.add(NOMINAL10);
+        list1.add(NOMINAL10);
+        list1.add(NOMINAL10);
+
+        final List<Integer> list2 = new ArrayList<>();
+        list2.add(NOMINAL10);
+        list2.add(NOMINAL10);
+        list2.add(NOMINAL10);
+        list2.add(NOMINAL10);
+        list2.add(NOMINAL5);
+        list2.add(NOMINAL5);
+
+        final List<Integer> list3 = new ArrayList<>();
+        list3.add(NOMINAL10);
+        list3.add(NOMINAL10);
+        list3.add(NOMINAL10);
+        list3.add(NOMINAL5);
+        list3.add(NOMINAL5);
+        list3.add(NOMINAL5);
+        list3.add(NOMINAL5);
+
+        final List<Integer> list4 = new ArrayList<>();
+        list4.add(NOMINAL10);
+        list4.add(NOMINAL10);
+        list4.add(NOMINAL5);
+        list4.add(NOMINAL5);
+        list4.add(NOMINAL5);
+        list4.add(NOMINAL5);
+        list4.add(NOMINAL5);
+        list4.add(NOMINAL5);
+
+        final List<Integer> list5 = new ArrayList<>();
+        list5.add(NOMINAL10);
+        list5.add(NOMINAL5);
+        list5.add(NOMINAL5);
+        list5.add(NOMINAL5);
+        list5.add(NOMINAL5);
+        list5.add(NOMINAL5);
+        list5.add(NOMINAL5);
+        list5.add(NOMINAL5);
+        list5.add(NOMINAL1);
+        list5.add(NOMINAL1);
+        list5.add(NOMINAL1);
+        list5.add(NOMINAL1);
+        list5.add(NOMINAL1);
+
+        final List<List<Integer>> expectChangeCoins = new ArrayList<>();
+        expectChangeCoins.add(list1);
+        expectChangeCoins.add(list2);
+        expectChangeCoins.add(list3);
+        expectChangeCoins.add(list4);
+        expectChangeCoins.add(list5);
 
         final int amount = 50;
-        final Map<Integer, Integer> actualChangeCoins = this.cashMachine.getChangeCoins(amount);
+
+        final List<List<Integer>> actualChangeCoins = this.cashMachine.getChangeCoins(amount);
 
         Assert.assertThat(actualChangeCoins, is(expectChangeCoins));
     }
@@ -151,12 +273,22 @@ public class CashMachineTest {
     public void whenGetChangeCoinsScript3() throws NotEnoughMoneyException {
         this.addCoinsInBancomat();
 
-        final Map<Integer, Integer> expectChangeCoins = new HashMap<>();
-        final int countChange5 = 1;
-        expectChangeCoins.put(NOMINAL5, countChange5);
+        final List<Integer> list1 = new ArrayList<>();
+        list1.add(NOMINAL5);
+
+        final List<Integer> list2 = new ArrayList<>();
+        list2.add(NOMINAL1);
+        list2.add(NOMINAL1);
+        list2.add(NOMINAL1);
+        list2.add(NOMINAL1);
+        list2.add(NOMINAL1);
+
+        final List<List<Integer>> expectChangeCoins = new ArrayList<>();
+        expectChangeCoins.add(list1);
+        expectChangeCoins.add(list2);
 
         final int amount = 5;
-        final Map<Integer, Integer> actualChangeCoins = this.cashMachine.getChangeCoins(amount);
+        final List<List<Integer>> actualChangeCoins = this.cashMachine.getChangeCoins(amount);
 
         Assert.assertThat(actualChangeCoins, is(expectChangeCoins));
     }
@@ -170,13 +302,73 @@ public class CashMachineTest {
     public void whenGetChangeCoinsScript4() throws NotEnoughMoneyException {
         this.addCoinsInBancomat();
 
-        final Map<Integer, Integer> expectChangeCoins = new HashMap<>();
-        final int countChange5 = 1;
-        expectChangeCoins.put(NOMINAL10, COUNT10);
-        expectChangeCoins.put(NOMINAL5, countChange5);
+        final List<Integer> list1 = new ArrayList<>();
+        list1.add(NOMINAL10);
+        list1.add(NOMINAL10);
+        list1.add(NOMINAL10);
+        list1.add(NOMINAL10);
+        list1.add(NOMINAL10);
+        list1.add(NOMINAL5);
+
+        final List<Integer> list2 = new ArrayList<>();
+        list2.add(NOMINAL10);
+        list2.add(NOMINAL10);
+        list2.add(NOMINAL10);
+        list2.add(NOMINAL10);
+        list2.add(NOMINAL5);
+        list2.add(NOMINAL5);
+        list2.add(NOMINAL5);
+
+        final List<Integer> list3 = new ArrayList<>();
+        list3.add(NOMINAL10);
+        list3.add(NOMINAL10);
+        list3.add(NOMINAL10);
+        list3.add(NOMINAL5);
+        list3.add(NOMINAL5);
+        list3.add(NOMINAL5);
+        list3.add(NOMINAL5);
+        list3.add(NOMINAL5);
+
+        final List<Integer> list4 = new ArrayList<>();
+        list4.add(NOMINAL10);
+        list4.add(NOMINAL10);
+        list4.add(NOMINAL5);
+        list4.add(NOMINAL5);
+        list4.add(NOMINAL5);
+        list4.add(NOMINAL5);
+        list4.add(NOMINAL5);
+        list4.add(NOMINAL5);
+        list4.add(NOMINAL5);
+
+        final List<Integer> list5 = new ArrayList<>();
+        list5.add(NOMINAL10);
+        list5.add(NOMINAL5);
+        list5.add(NOMINAL5);
+        list5.add(NOMINAL5);
+        list5.add(NOMINAL5);
+        list5.add(NOMINAL5);
+        list5.add(NOMINAL5);
+        list5.add(NOMINAL5);
+        list5.add(NOMINAL1);
+        list5.add(NOMINAL1);
+        list5.add(NOMINAL1);
+        list5.add(NOMINAL1);
+        list5.add(NOMINAL1);
+        list5.add(NOMINAL1);
+        list5.add(NOMINAL1);
+        list5.add(NOMINAL1);
+        list5.add(NOMINAL1);
+        list5.add(NOMINAL1);
+
+        final List<List<Integer>> expectChangeCoins = new ArrayList<>();
+        expectChangeCoins.add(list1);
+        expectChangeCoins.add(list2);
+        expectChangeCoins.add(list3);
+        expectChangeCoins.add(list4);
+        expectChangeCoins.add(list5);
 
         final int amount = 55;
-        final Map<Integer, Integer> actualChangeCoins = this.cashMachine.getChangeCoins(amount);
+        final List<List<Integer>> actualChangeCoins = this.cashMachine.getChangeCoins(amount);
 
         Assert.assertThat(actualChangeCoins, is(expectChangeCoins));
     }
@@ -190,12 +382,16 @@ public class CashMachineTest {
     public void whenGetChangeCoinsScript5() throws NotEnoughMoneyException {
         this.addCoinsInBancomat();
 
-        final Map<Integer, Integer> expectChangeCoins = new HashMap<>();
-        final int countChange = 3;
-        expectChangeCoins.put(NOMINAL1, countChange);
+        final List<Integer> list1 = new ArrayList<>();
+        list1.add(NOMINAL1);
+        list1.add(NOMINAL1);
+        list1.add(NOMINAL1);
+
+        final List<List<Integer>> expectChangeCoins = new ArrayList<>();
+        expectChangeCoins.add(list1);
 
         final int amount = 3;
-        final Map<Integer, Integer> actualChangeCoins = this.cashMachine.getChangeCoins(amount);
+        final List<List<Integer>> actualChangeCoins = this.cashMachine.getChangeCoins(amount);
 
         Assert.assertThat(actualChangeCoins, is(expectChangeCoins));
     }
@@ -209,14 +405,28 @@ public class CashMachineTest {
     public void whenGetChangeCoinsScript6() throws NotEnoughMoneyException {
         this.addCoinsInBancomat();
 
-        final Map<Integer, Integer> expectChangeCoins = new HashMap<>();
-        final int countChange = 3;
-        expectChangeCoins.put(NOMINAL10, COUNT10);
-        expectChangeCoins.put(NOMINAL5, COUNT5);
-        expectChangeCoins.put(NOMINAL1, countChange);
+        final List<Integer> list1 = new ArrayList<>();
+        list1.add(NOMINAL10);
+        list1.add(NOMINAL10);
+        list1.add(NOMINAL10);
+        list1.add(NOMINAL10);
+        list1.add(NOMINAL10);
+        list1.add(NOMINAL5);
+        list1.add(NOMINAL5);
+        list1.add(NOMINAL5);
+        list1.add(NOMINAL5);
+        list1.add(NOMINAL5);
+        list1.add(NOMINAL5);
+        list1.add(NOMINAL5);
+        list1.add(NOMINAL1);
+        list1.add(NOMINAL1);
+        list1.add(NOMINAL1);
+
+        final List<List<Integer>> expectChangeCoins = new ArrayList<>();
+        expectChangeCoins.add(list1);
 
         final int amount = 88;
-        final Map<Integer, Integer> actualChangeCoins = this.cashMachine.getChangeCoins(amount);
+        final List<List<Integer>> actualChangeCoins = this.cashMachine.getChangeCoins(amount);
 
         Assert.assertThat(actualChangeCoins, is(expectChangeCoins));
     }
@@ -230,14 +440,34 @@ public class CashMachineTest {
     public void whenGetChangeCoinsScript7() throws NotEnoughMoneyException {
         this.addCoinsInBancomat();
 
-        final Map<Integer, Integer> expectChangeCoins = new HashMap<>();
-        final int countChange = 1;
-        expectChangeCoins.put(NOMINAL10, countChange);
-        expectChangeCoins.put(NOMINAL5, countChange);
-        expectChangeCoins.put(NOMINAL1, countChange);
+        final List<Integer> list1 = new ArrayList<>();
+        list1.add(NOMINAL10);
+        list1.add(NOMINAL5);
+        list1.add(NOMINAL1);
+
+        final List<Integer> list2 = new ArrayList<>();
+        list2.add(NOMINAL5);
+        list2.add(NOMINAL5);
+        list2.add(NOMINAL5);
+        list2.add(NOMINAL1);
+
+        final List<Integer> list3 = new ArrayList<>();
+        list3.add(NOMINAL5);
+        list3.add(NOMINAL5);
+        list3.add(NOMINAL1);
+        list3.add(NOMINAL1);
+        list3.add(NOMINAL1);
+        list3.add(NOMINAL1);
+        list3.add(NOMINAL1);
+        list3.add(NOMINAL1);
+
+        final List<List<Integer>> expectChangeCoins = new ArrayList<>();
+        expectChangeCoins.add(list1);
+        expectChangeCoins.add(list2);
+        expectChangeCoins.add(list3);
 
         final int amount = 16;
-        final Map<Integer, Integer> actualChangeCoins = this.cashMachine.getChangeCoins(amount);
+        final List<List<Integer>> actualChangeCoins = this.cashMachine.getChangeCoins(amount);
 
         Assert.assertThat(actualChangeCoins, is(expectChangeCoins));
     }
@@ -251,13 +481,24 @@ public class CashMachineTest {
     public void whenGetChangeCoinsScript8() throws NotEnoughMoneyException {
         this.addCoinsInBancomat();
 
-        final Map<Integer, Integer> expectChangeCoins = new HashMap<>();
-        final int countChange = 1;
-        expectChangeCoins.put(NOMINAL5, countChange);
-        expectChangeCoins.put(NOMINAL1, countChange);
+        final List<Integer> list1 = new ArrayList<>();
+        list1.add(NOMINAL5);
+        list1.add(NOMINAL1);
+
+        final List<Integer> list2 = new ArrayList<>();
+        list2.add(NOMINAL1);
+        list2.add(NOMINAL1);
+        list2.add(NOMINAL1);
+        list2.add(NOMINAL1);
+        list2.add(NOMINAL1);
+        list2.add(NOMINAL1);
+
+        final List<List<Integer>> expectChangeCoins = new ArrayList<>();
+        expectChangeCoins.add(list1);
+        expectChangeCoins.add(list2);
 
         final int amount = 6;
-        final Map<Integer, Integer> actualChangeCoins = this.cashMachine.getChangeCoins(amount);
+        final List<List<Integer>> actualChangeCoins = this.cashMachine.getChangeCoins(amount);
 
         Assert.assertThat(actualChangeCoins, is(expectChangeCoins));
     }
@@ -271,13 +512,31 @@ public class CashMachineTest {
     public void whenGetChangeCoinsScript9() throws NotEnoughMoneyException {
         this.addCoinsInBancomat();
 
-        final Map<Integer, Integer> expectChangeCoins = new HashMap<>();
-        final int countChange = 1;
-        expectChangeCoins.put(NOMINAL10, countChange);
-        expectChangeCoins.put(NOMINAL1, countChange);
+        final List<Integer> list1 = new ArrayList<>();
+        list1.add(NOMINAL10);
+        list1.add(NOMINAL1);
+
+        final List<Integer> list2 = new ArrayList<>();
+        list2.add(NOMINAL5);
+        list2.add(NOMINAL5);
+        list2.add(NOMINAL1);
+
+        final List<Integer> list3 = new ArrayList<>();
+        list3.add(NOMINAL5);
+        list3.add(NOMINAL1);
+        list3.add(NOMINAL1);
+        list3.add(NOMINAL1);
+        list3.add(NOMINAL1);
+        list3.add(NOMINAL1);
+        list3.add(NOMINAL1);
+
+        final List<List<Integer>> expectChangeCoins = new ArrayList<>();
+        expectChangeCoins.add(list1);
+        expectChangeCoins.add(list2);
+        expectChangeCoins.add(list3);
 
         final int amount = 11;
-        final Map<Integer, Integer> actualChangeCoins = this.cashMachine.getChangeCoins(amount);
+        final List<List<Integer>> actualChangeCoins = this.cashMachine.getChangeCoins(amount);
 
         Assert.assertThat(actualChangeCoins, is(expectChangeCoins));
     }
@@ -291,13 +550,35 @@ public class CashMachineTest {
     public void whenGetChangeCoinsScript10() throws NotEnoughMoneyException {
         this.addCoinsInBancomat();
 
-        final Map<Integer, Integer> expectChangeCoins = new HashMap<>();
-        expectChangeCoins.put(NOMINAL10, COUNT10);
-        expectChangeCoins.put(NOMINAL5, COUNT5);
-        expectChangeCoins.put(NOMINAL1, COUNT1);
+        final List<Integer> list1 = new ArrayList<>();
+        list1.add(NOMINAL10);
+        list1.add(NOMINAL10);
+        list1.add(NOMINAL10);
+        list1.add(NOMINAL10);
+        list1.add(NOMINAL10);
+        list1.add(NOMINAL5);
+        list1.add(NOMINAL5);
+        list1.add(NOMINAL5);
+        list1.add(NOMINAL5);
+        list1.add(NOMINAL5);
+        list1.add(NOMINAL5);
+        list1.add(NOMINAL5);
+        list1.add(NOMINAL1);
+        list1.add(NOMINAL1);
+        list1.add(NOMINAL1);
+        list1.add(NOMINAL1);
+        list1.add(NOMINAL1);
+        list1.add(NOMINAL1);
+        list1.add(NOMINAL1);
+        list1.add(NOMINAL1);
+        list1.add(NOMINAL1);
+        list1.add(NOMINAL1);
+
+        final List<List<Integer>> expectChangeCoins = new ArrayList<>();
+        expectChangeCoins.add(list1);
 
         final int amount = COUNT1 * NOMINAL1 + COUNT5 * NOMINAL5 + COUNT10 * NOMINAL10;
-        final Map<Integer, Integer> actualChangeCoins = this.cashMachine.getChangeCoins(amount);
+        final List<List<Integer>> actualChangeCoins = this.cashMachine.getChangeCoins(amount);
 
         Assert.assertThat(actualChangeCoins, is(expectChangeCoins));
     }
@@ -314,7 +595,7 @@ public class CashMachineTest {
         exception.expect(NotEnoughMoneyException.class);
 
         final int amount = COUNT1 * NOMINAL1 + COUNT5 * NOMINAL5 + COUNT10 * NOMINAL10 + 1;
-        final Map<Integer, Integer> actualChangeCoins = this.cashMachine.getChangeCoins(amount);
+        final List<List<Integer>> actualChangeCoins = this.cashMachine.getChangeCoins(amount);
     }
 
     /**
@@ -326,12 +607,41 @@ public class CashMachineTest {
     public void whenGetChangeCoinsScript11() throws NotEnoughMoneyException {
         this.addCoinsInBancomat();
 
-        final Map<Integer, Integer> expectChangeCoins = new HashMap<>();
-        final int count = 1;
-        expectChangeCoins.put(NOMINAL10, count);
+        final List<Integer> list1 = new ArrayList<>();
+        list1.add(NOMINAL10);
+
+        final List<Integer> list2 = new ArrayList<>();
+        list2.add(NOMINAL5);
+        list2.add(NOMINAL5);
+
+        final List<Integer> list3 = new ArrayList<>();
+        list3.add(NOMINAL5);
+        list3.add(NOMINAL1);
+        list3.add(NOMINAL1);
+        list3.add(NOMINAL1);
+        list3.add(NOMINAL1);
+        list3.add(NOMINAL1);
+
+        final List<Integer> list4 = new ArrayList<>();
+        list4.add(NOMINAL1);
+        list4.add(NOMINAL1);
+        list4.add(NOMINAL1);
+        list4.add(NOMINAL1);
+        list4.add(NOMINAL1);
+        list4.add(NOMINAL1);
+        list4.add(NOMINAL1);
+        list4.add(NOMINAL1);
+        list4.add(NOMINAL1);
+        list4.add(NOMINAL1);
+
+        final List<List<Integer>> expectChangeCoins = new ArrayList<>();
+        expectChangeCoins.add(list1);
+        expectChangeCoins.add(list2);
+        expectChangeCoins.add(list3);
+        expectChangeCoins.add(list4);
 
         final int amount = NOMINAL10;
-        final Map<Integer, Integer> actualChangeCoins = this.cashMachine.getChangeCoins(amount);
+        final List<List<Integer>> actualChangeCoins = this.cashMachine.getChangeCoins(amount);
 
         Assert.assertThat(actualChangeCoins, is(expectChangeCoins));
     }
