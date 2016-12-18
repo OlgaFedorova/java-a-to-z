@@ -1,4 +1,4 @@
-package ofedorova;
+package ofedorova.EvenNumbers;
 
 import org.junit.Before;
 import org.junit.Test;

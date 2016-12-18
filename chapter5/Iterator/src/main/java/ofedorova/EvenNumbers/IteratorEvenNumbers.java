@@ -1,4 +1,4 @@
-package ofedorova;
+package ofedorova.EvenNumbers;
 
 import java.util.Arrays;
 import java.util.Iterator;
