@@ -37,7 +37,7 @@ public class IteratorPrimeNumbers implements Iterator<Integer> {
      */
     @Override
     public boolean hasNext() {
-        return this.position < this.values.length;
+        return this.position < this.values.length && (this.isPrimeNumber() || this.movePositionAndCheckNumber());
     }
 
     /**
@@ -47,49 +47,54 @@ public class IteratorPrimeNumbers implements Iterator<Integer> {
      */
     @Override
     public Integer next() {
-        Integer current = null;
         if (this.position >= this.values.length) {
             throw new NoSuchElementException();
-        } else if (this.position == 0) {
-            if (this.checkPrimeNumber(this.values[this.position])) {
-                current = this.values[this.position];
-            } else {
-                this.movePosition();
-                current = this.values[this.position];
-            }
-        } else {
-            current = this.values[this.position];
         }
-        this.movePosition();
-
+        Integer current = null;
+        if (this.isPrimeNumber() || this.movePositionAndCheckNumber()) {
+            current = this.values[this.position];
+            this.movePositionAndCheckNumber();
+        } else {
+            throw new NoSuchElementException();
+        }
         return current;
     }
 
     /**
-     * Method move position on next prime number.
+     * Method moves position and check that number in position is prime.
+     *
+     * @return if number in position is prime return true, else return false.
      */
-    private void movePosition() {
-        boolean findPrimeNumber = false;
-        while (!findPrimeNumber) {
-            this.position++;
+    private boolean movePositionAndCheckNumber() {
+        boolean result = false;
+        while (this.position < this.values.length) {
+            this.movePosition();
             if (this.position < this.values.length) {
-                findPrimeNumber = this.checkPrimeNumber(this.values[this.position]);
-            } else {
+                result = this.isPrimeNumber();
+            }
+            if (result) {
                 break;
             }
         }
+        return result;
     }
 
     /**
-     * Method checks that number is prime.
-     *
-     * @param number for checking.
-     * @return if number is prime return true, else return false.
+     * Method moves position.
      */
-    private boolean checkPrimeNumber(int number) {
+    private void movePosition() {
+        this.position++;
+    }
+
+    /**
+     * Method checks that number in position is prime.
+     *
+     * @return if number in position is prime return true, else return false.
+     */
+    private boolean isPrimeNumber() {
         boolean isPrimeNumber = true;
-        for (int i = 2; i <= Math.sqrt(number); i++) {
-            if (number % i == 0) {
+        for (int i = 2; i <= Math.sqrt(this.values[this.position]); i++) {
+            if (this.values[this.position] % i == 0) {
                 isPrimeNumber = false;
                 break;
             }

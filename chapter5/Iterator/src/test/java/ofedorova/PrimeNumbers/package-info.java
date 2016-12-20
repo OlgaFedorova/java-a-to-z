@@ -1,4 +1,4 @@
 /**
- * Iterator for prime numbers.
+ * Создать итератор возвращающий только простые числа. (числа которые деляться только на 1 и на себя).
  */
 package ofedorova.PrimeNumbers;

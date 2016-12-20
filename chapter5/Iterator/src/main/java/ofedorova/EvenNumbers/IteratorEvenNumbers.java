@@ -37,7 +37,7 @@ public class IteratorEvenNumbers implements Iterator<Integer> {
      */
     @Override
     public boolean hasNext() {
-        return this.position < this.values.length;
+        return this.position < this.values.length && (this.isEvenNumber() || this.movePositionAndCheckNumber());
     }
 
     /**
@@ -50,28 +50,48 @@ public class IteratorEvenNumbers implements Iterator<Integer> {
         if (this.position >= this.values.length) {
             throw new NoSuchElementException();
         }
-
-        Integer current = this.getCurrentAndMovePosition();
-        this.position++;
-        this.getCurrentAndMovePosition();
+        Integer current = null;
+        if (this.isEvenNumber() || this.movePositionAndCheckNumber()) {
+            current = this.values[this.position];
+            this.movePositionAndCheckNumber();
+        } else {
+            throw new NoSuchElementException();
+        }
         return current;
     }
 
     /**
-     * Private logic for returns current element, and move position on next element.
+     * Method moves position and check that number in position is even.
      *
-     * @return current element.
+     * @return if number in position is even return true, else return false.
      */
-    private Integer getCurrentAndMovePosition() {
-        Integer next = null;
+    private boolean movePositionAndCheckNumber() {
+        boolean result = false;
         while (this.position < this.values.length) {
-            next = this.values[this.position];
-            if (next != null && next % 2 == 0) {
+            this.movePosition();
+            if (this.position < this.values.length) {
+                result = this.isEvenNumber();
+            }
+            if (result) {
                 break;
-            } else {
-                this.position++;
             }
         }
-        return next;
+        return result;
+    }
+
+    /**
+     * Method moves position.
+     */
+    private void movePosition() {
+        this.position++;
+    }
+
+    /**
+     * Method checks that number in position is even.
+     *
+     * @return if number in position is even return true, else return false.
+     */
+    private boolean isEvenNumber() {
+        return this.values[this.position] % 2 == 0;
     }
 }

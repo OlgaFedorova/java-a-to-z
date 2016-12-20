@@ -1,6 +1,5 @@
 package ofedorova.PrimeNumbers;
 
-import org.junit.Before;
 import org.junit.Test;
 
 import java.util.Iterator;
@@ -45,8 +44,7 @@ public class IteratorPrimeNumbersTest {
     /**
      * Initilize state for testing.
      */
-    @Before
-    public void initilize() {
+    private void initilize() {
         this.iterator = new IteratorPrimeNumbers(new int[]{this.element1, this.element2, this.element3, this.element4, this.element5});
     }
 
@@ -55,6 +53,7 @@ public class IteratorPrimeNumbersTest {
      */
     @Test
     public void whenHasNextTrue() {
+        this.initilize();
         this.iterator.next();
         final boolean expected = true;
         final boolean actual = this.iterator.hasNext();
@@ -67,6 +66,7 @@ public class IteratorPrimeNumbersTest {
      */
     @Test
     public void whenHasNextFalse() {
+        this.initilize();
         this.iterator.next();
         this.iterator.next();
         this.iterator.next();
@@ -81,6 +81,7 @@ public class IteratorPrimeNumbersTest {
      */
     @Test
     public void whenGetFirstElement() {
+        this.initilize();
         final int expected = this.element1;
         final int actual = this.iterator.next();
 
@@ -92,6 +93,7 @@ public class IteratorPrimeNumbersTest {
      */
     @Test
     public void whenGetSecondElement() {
+        this.initilize();
         final int expected = this.element3;
         this.iterator.next();
         final int actual = this.iterator.next();
@@ -104,6 +106,7 @@ public class IteratorPrimeNumbersTest {
      */
     @Test
     public void whenGetThirdElement() {
+        this.initilize();
         final int expected = this.element5;
         this.iterator.next();
         this.iterator.next();
@@ -117,6 +120,7 @@ public class IteratorPrimeNumbersTest {
      */
     @Test(expected = NoSuchElementException.class)
     public void whenGetElementAndNoSuchElement() {
+        this.initilize();
         this.iterator.next();
         this.iterator.next();
         this.iterator.next();
@@ -128,6 +132,7 @@ public class IteratorPrimeNumbersTest {
      */
     @Test
     public void testForEach() {
+        this.initilize();
         Iterable<Integer> iterable = new Iterable<Integer>() {
             @Override
             public Iterator<Integer> iterator() {
@@ -143,6 +148,17 @@ public class IteratorPrimeNumbersTest {
             actual[index++] = integer;
         }
 
+        assertThat(actual, is(expected));
+    }
+
+    /**
+     * Test when array hasn't prime number, аnd method hasNext return false.
+     */
+    @Test
+    public void whenHasNotNextElement() {
+        this.iterator = new IteratorPrimeNumbers(new int[]{this.element2, this.element4});
+        final boolean expected = false;
+        final boolean actual = this.iterator.hasNext();
         assertThat(actual, is(expected));
     }
 
