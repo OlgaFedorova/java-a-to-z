@@ -39,4 +39,39 @@ public abstract class Base {
     public void setId(String id) {
         this.id = id;
     }
+
+    /**
+     * Compares this object to the specified object.  The result is
+     * {@code true} if and only if the argument is not
+     * {@code null} and is an {@code Item} object that
+     * contains the same values of field "id" as this object.
+     *
+     * @param o the object to compare with.
+     * @return {@code true} if the objects are the same;
+     * {@code false} otherwise.
+     */
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+
+        Base base = (Base) o;
+
+        return id != null ? id.equals(base.id) : base.id == null;
+
+    }
+
+    /**
+     * Returns a hash code for this {@code Base}.
+     *
+     * @return a hash code value for this object.
+     */
+    @Override
+    public int hashCode() {
+        return id != null ? id.hashCode() : 0;
+    }
 }

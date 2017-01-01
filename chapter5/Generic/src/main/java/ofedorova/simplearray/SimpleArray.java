@@ -1,15 +1,14 @@
 package ofedorova.simplearray;
 
 import java.lang.reflect.ParameterizedType;
-import java.util.Arrays;
 
 /**
  * Class implement simple array.
  *
+ * @param <T> the class of the objects in the array.
  * @author Olga Fedorova
  * @version 1.0
  * @since 21.12.2016
- * @param <T> the class of the objects in the array.
  */
 public class SimpleArray<T> {
     /**
@@ -156,15 +155,19 @@ public class SimpleArray<T> {
      * @return if element finding in container returns its index, else return -1.
      */
     private int getIndex(T element) {
-        int index = Arrays.binarySearch(this.container, element);
-        if (!(index >= 0 && index < this.container.length)) {
-            index = -1;
+        int index = -1;
+        for (int i = 0; i < this.container.length; i++) {
+            if (this.container[i] != null && this.container[i].equals(element)) {
+                index = i;
+                break;
+            }
         }
         return index;
     }
 
     /**
      * Private logic for deleting element from container by index.
+     *
      * @param index index of deleting element.
      */
     private void deleteElement(int index) {
