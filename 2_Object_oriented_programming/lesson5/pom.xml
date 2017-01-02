@@ -4,15 +4,15 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>ru.ofedorova.job4j.chapter1.lesson1</groupId>
-    <artifactId>lesson1</artifactId>
+    <groupId>ru.ofedorova.job4j.2_Object_oriented_programming.lesson5</groupId>
+    <artifactId>tracker</artifactId>
+    <packaging>jar</packaging>
     <version>1.0</version>
+    <name>lesson5</name>
 
     <parent>
-        <groupId>ru.ofedorova.job4j.chapter1</groupId>
-        <artifactId>chapter1</artifactId>
+        <groupId>ru.ofedorova.job4j.2_Object_oriented_programming</groupId>
+        <artifactId>2_Object_oriented_programming</artifactId>
         <version>1.0</version>
     </parent>
-
-
 </project>
