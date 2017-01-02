@@ -10,10 +10,10 @@
     <packaging>pom</packaging>
 
     <modules>
-        <module>chapter1</module>
-        <module>chapter2</module>
-        <module>chapter4</module>
-        <module>chapter5</module>
+        <module>1_Basic_syntax</module>
+        <module>2_Object_oriented_programming</module>
+        <module>4_SOLID</module>
+        <module>5_Collections</module>
     </modules>
 
     <properties>
