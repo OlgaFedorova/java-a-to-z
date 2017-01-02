@@ -1,4 +1,0 @@
-/**
- * Calculator.
- */
-package ofedorova;

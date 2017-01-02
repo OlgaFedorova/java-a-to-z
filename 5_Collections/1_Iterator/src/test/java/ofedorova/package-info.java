@@ -1,4 +1,0 @@
-/**
- * Study iterators.
- */
-package ofedorova;
