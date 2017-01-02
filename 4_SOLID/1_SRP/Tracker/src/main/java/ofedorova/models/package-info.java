@@ -1,0 +1,4 @@
+/**
+ * Models.
+ */
+package ofedorova.models;

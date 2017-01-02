@@ -1,0 +1,59 @@
+Input size of area game:
+Input count for win of area game:
+Input name of user:
+Select symbol for user X or O
+User is first gamer? Y/N
+Step of Gamer{name='Computer', symbol=O}
+   0 1 2
+ 0|_|_|_|
+ 1|_|O|_|
+ 2|_|_|_|
+Step of Gamer{name='Olga', symbol=X}
+Input coordinate X:
+Input coordinate Y:
+   0 1 2
+ 0|X|_|_|
+ 1|_|O|_|
+ 2|_|_|_|
+Step of Gamer{name='Computer', symbol=O}
+   0 1 2
+ 0|X|_|_|
+ 1|O|O|_|
+ 2|_|_|_|
+Step of Gamer{name='Olga', symbol=X}
+Input coordinate X:
+Input coordinate Y:
+   0 1 2
+ 0|X|_|_|
+ 1|O|O|X|
+ 2|_|_|_|
+Step of Gamer{name='Computer', symbol=O}
+   0 1 2
+ 0|X|O|_|
+ 1|O|O|X|
+ 2|_|_|_|
+Step of Gamer{name='Olga', symbol=X}
+Input coordinate X:
+Input coordinate Y:
+   0 1 2
+ 0|X|O|_|
+ 1|O|O|X|
+ 2|_|X|_|
+Step of Gamer{name='Computer', symbol=O}
+   0 1 2
+ 0|X|O|O|
+ 1|O|O|X|
+ 2|_|X|_|
+Step of Gamer{name='Olga', symbol=X}
+Input coordinate X:
+Input coordinate Y:
+   0 1 2
+ 0|X|O|O|
+ 1|O|O|X|
+ 2|_|X|X|
+Step of Gamer{name='Computer', symbol=O}
+   0 1 2
+ 0|X|O|O|
+ 1|O|O|X|
+ 2|O|X|X|
+Game over. Winner is Gamer{name='Computer', symbol=O}

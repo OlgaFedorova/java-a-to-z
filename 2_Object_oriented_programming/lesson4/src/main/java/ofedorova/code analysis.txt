@@ -1,0 +1,78 @@
+1. интерфейс GeneraterId
+
+Можно было бы создать интерфейс GeneraterId:
+
+interface GeneraterId{
+
+ String generateId();
+
+}
+
+В классе Tracker создать приватное поле типа GeneraterId и присвоить ему объект с помощью анонимного класса:
+
+private GeneraterId generator = new GeneraterId() {
+        
+        private final Random RN = new Random();
+        
+        @Override
+        public String generateId() {
+            return String.valueOf(System.currentTimeMillis()+ RN.nextInt());
+        }
+		
+};
+
+Код метода private String generateId изменить следующим образом:
+
+private String generateId(){
+     return generator.generateId();
+}
+
+2. Интерфейс Storage
+Класс Tracker можно было бы реализовать не только с помощью массивов, но и с помощью других классов Collection (ArrayList, LinkedList, HashMap и т.д.).
+Для каждой коллекции была бы своя реализация, поэтому класс Tracker можно сделать реализацией интерфейса Storage.
+
+interface Storage {
+    
+    /*
+    *The method adds new item into the array "items".
+    *@param item
+    *@return new item
+    */
+    public Item addItem(Item item);
+    
+    /*
+    *The method adds new comment into the item.
+    *@param comment
+    *@return item
+    */
+    public Item addComment(Comment comment);
+    
+    /*
+    *The method removes the item ftom the array "items".
+    *@param item
+    *@return true or false
+    */
+    public boolean removeItem(Item item);
+    
+    /*
+    *The metod edits the item into the array "items".
+    *@param item
+    */
+    public void editItem(Item item);
+    
+    /*
+    *The metod returns the array "items".
+    *@return items
+    */
+    public Item[] getItems();
+     
+    /*
+    *The metod returns the array "items" to using by filter.
+    *@return items
+    */
+    public Item[] getItems(Filter filter);
+    
+ }
+ 
+
+    

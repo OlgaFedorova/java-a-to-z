@@ -1,0 +1,4 @@
+/**
+ * Study list.
+ */
+package ofedorova;
