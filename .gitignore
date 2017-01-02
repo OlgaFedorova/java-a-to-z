@@ -30,3 +30,9 @@ hs_err_pid*
 /_windows/
 /mavenVersion.xml
 /ui.lnf.xml
+/inspection/
+/databaseSettings.xml
+/find.xml
+/gradle.settings.xml
+/gradle.run.settings.xml
+/inspection/Default.xml
