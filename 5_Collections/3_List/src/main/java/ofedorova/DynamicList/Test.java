@@ -6,4 +6,5 @@ package ofedorova.DynamicList;
 public class Test {
     private int i;
     private int i2;
+    private int i3;
 }
