@@ -14,13 +14,13 @@
     </parent>
 
     <modules>
-        <module>lesson1</module>
-        <module>lesson2</module>
-		<module>lesson3</module>
-		<module>lesson4</module>
-		<module>lesson5</module>
-		<module>lesson6</module>
-		<module>total</module>
+        <module>2_1_Inheritance</module>
+        <module>2_2_Encapsulation</module>
+		<module>2_3_Polymorphism</module>
+		<module>2_4_Inner_classes</module>
+		<module>2_5_Exceptions</module>
+		<module>2_6_Abstract_and_anonymous_classes</module>
+		<module>2_total</module>
     </modules>
 
 </project>

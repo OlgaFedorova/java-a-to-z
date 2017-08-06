@@ -16,11 +16,11 @@
     </parent>
 
     <modules>
-        <module>1_JVM_Byte_code</module>
-        <module>lesson2</module>
-        <module>lesson3</module>
-        <module>lesson4</module>
-        <module>lesson5</module>
-        <module>lesson6</module>
+        <module>1_1_JVM_Byte_code</module>
+        <module>1_2_Data_types</module>
+        <module>1_3_Conditional_operator</module>
+        <module>1_4_Cycles</module>
+        <module>1_5_Arrays</module>
+        <module>1_6_TestTask</module>
     </modules>
 </project>
